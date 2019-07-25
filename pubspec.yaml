@@ -1,0 +1,55 @@
+name: anote_tudo
+description: Faça suas de compras e ou tarefas do dia e salve em seu celular...
+#desenvolvedor IOs: Claudio Vianna  <claudiolavianna@gmail.com>
+#desenvolvedor Android: Roberto Castro  <robocast1331@gmail.com>
+#homepage: https://github.com/wuzhendev/flutter-cupertino-date-picker
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^0.1.2
+  path_provider: ^0.5.0+1
+  #Bibliotecas da agenda
+  sqflite: ^1.1.5
+  url_launcher: ^5.0.2
+  image_picker: ^0.6.0+3
+  image_cropper: ^1.0.1
+  multi_masked_formatter: ^0.1.0
+  #Bibliotecas da agenda
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.6.1
+
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+     - assets/images/caderno_lapis.png
+     - assets/images/splash.png
+
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+
