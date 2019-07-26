@@ -29,7 +29,8 @@ class DrawerList extends StatelessWidget {
                         top: 16.0,
                         left: 90.0,
                         right: 10.0,
-                        child: Text(
+                        child:
+                        Text(
                           "Anote\nTudo!",
                           style: TextStyle(
                               fontSize: 44.0,
@@ -55,14 +56,14 @@ class DrawerList extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => AnoteScreen()));
               },
               title: Text(
-                "Anotações",
+                "Tarefas",
                 style: TextStyle(
                   fontSize: 22.0,
                   color: Colors.black,
                 ),
               ),
               subtitle: Text(
-                "Suas tarefas gerais",
+                "Sua lista de tarefas",
               ),
               leading: Icon(
                 Icons.mode_edit,

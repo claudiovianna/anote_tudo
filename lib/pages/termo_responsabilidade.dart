@@ -13,7 +13,7 @@ class TermoUso extends StatelessWidget {
           style: TextStyle(color: Colors.white, fontSize: 23.0),
         ),
         //Cor app bar
-        backgroundColor: Colors.amber[600],
+        backgroundColor: Colors.green[400],
         centerTitle: true,
       ),
       body: Container(

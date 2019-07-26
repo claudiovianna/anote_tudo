@@ -38,6 +38,7 @@ flutter:
   assets:
      - assets/images/caderno_lapis.png
      - assets/images/splash.png
+     - assets/images/bloco_de_notas.png
 
 
   fonts:

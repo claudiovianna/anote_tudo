@@ -72,7 +72,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
       appBar: AppBar(
         //title: TextStyle(color: Colors.white)
         title: Text(
-          "Anotações", //Cor do título - Lista Geral
+          "Tarefas", //Cor do título - Lista Geral
           style: TextStyle(color: Colors.white, fontSize: 23.0),
         ),
         //Cor do appBar
@@ -155,7 +155,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
       direction: DismissDirection.startToEnd,
       child: CheckboxListTile(
         title: Text(_toDoList[index]["title"]),
-        activeColor: Colors.grey[800],
+        activeColor: Colors.green[700],
         // cor da caixa do checkBox
         value: _toDoList[index]["ok"],
         secondary: CircleAvatar(
