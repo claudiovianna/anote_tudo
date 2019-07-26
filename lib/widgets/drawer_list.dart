@@ -10,9 +10,6 @@ class DrawerList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        //        margin: EdgeInsets.only(bottom: 8.0),
-//        padding: EdgeInsets.fromLTRB(0.0, 16.0, 16.0, 8.0),
-        //width: 300,
         width: 300,
         color: Colors.grey[350],
         child: ListView(
@@ -26,17 +23,26 @@ class DrawerList extends StatelessWidget {
                   child: Stack(
                     children: <Widget>[
                       Positioned(
-                        top: 16.0,
-                        left: 90.0,
-                        right: 10.0,
+                        top: 10,
+                        left: 40,
+                        right: 10,
                         child:
-                        Text(
-                          "Anote\nTudo!",
-                          style: TextStyle(
-                              fontSize: 44.0,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                          ),
+
+                        Column(
+                          children: <Widget>[
+                            _blocoNotas(),
+                            Container(
+                              padding: EdgeInsets.only(right: 12),
+                              child: Text(
+                                "Anote Tudo!",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.green[800],
+                                    fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -141,5 +147,8 @@ class DrawerList extends StatelessWidget {
         ),
       ),
     );
+  }
+  Image _blocoNotas() {
+    return Image.asset("assets/images/bloco_de_notas.png", fit: BoxFit.none);
   }
 }
