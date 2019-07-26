@@ -97,20 +97,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.4"
-  image_cropper:
-    dependency: "direct main"
-    description:
-      name: image_cropper
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.2"
-  image_picker:
-    dependency: "direct main"
-    description:
-      name: image_picker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.6.0+13"
   matcher:
     dependency: transitive
     description:
@@ -125,13 +111,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.6"
-  multi_masked_formatter:
-    dependency: "direct main"
-    description:
-      name: multi_masked_formatter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.1"
   path:
     dependency: transitive
     description:
@@ -145,7 +124,7 @@ packages:
       name: path_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.0+1"
+    version: "1.2.0"
   pedantic:
     dependency: transitive
     description:
@@ -179,13 +158,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.5"
-  sqflite:
-    dependency: "direct main"
-    description:
-      name: sqflite
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.6+1"
   stack_trace:
     dependency: transitive
     description:
@@ -207,13 +179,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
-  synchronized:
-    dependency: transitive
-    description:
-      name: synchronized
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.0+1"
   term_glyph:
     dependency: transitive
     description:
@@ -235,13 +200,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.6"
-  url_launcher:
-    dependency: "direct main"
-    description:
-      name: url_launcher
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.0.3"
   vector_math:
     dependency: transitive
     description:
@@ -265,4 +223,4 @@ packages:
     version: "2.1.16"
 sdks:
   dart: ">=2.2.2 <3.0.0"
-  flutter: ">=1.5.0 <2.0.0"
+  flutter: ">=0.1.4 <2.0.0"

@@ -9,18 +9,17 @@ import 'package:path_provider/path_provider.dart';
 
 import 'anote_screen.dart';
 
-
 class ComprasScreen extends StatefulWidget {
   @override
   _ComprasScreenState createState() => _ComprasScreenState();
 }
 
 class _ComprasScreenState extends State<ComprasScreen> {
-  final _toDoController = TextEditingController();
+  final _toDoControllerCompras = TextEditingController();
 
-  List _toDoList = [];
-  Map<String, dynamic> _lastRemoved;
-  int _lastRemovedPos;
+  List _toDoListCompras = [];
+  Map<String, dynamic> _lastRemovedCompras;
+  int _lastRemovedPosCompras;
 
   @override
   void initState() {
@@ -28,7 +27,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
 
     _readData().then((data) {
       setState(() {
-        _toDoList = json.decode(data);
+        _toDoListCompras = json.decode(data);
       });
     });
   }
@@ -36,10 +35,10 @@ class _ComprasScreenState extends State<ComprasScreen> {
   void _addToDo() {
     setState(() {
       Map<String, dynamic> newToDo = Map();
-      newToDo["title"] = _toDoController.text;
-      _toDoController.text = "";
+      newToDo["title"] = _toDoControllerCompras.text;
+      _toDoControllerCompras.text = "";
       newToDo["ok"] = false;
-      _toDoList.add(newToDo);
+      _toDoListCompras.add(newToDo);
       _saveData();
     });
   }
@@ -48,7 +47,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
     await Future.delayed(Duration(seconds: 1));
 
     setState(() {
-      _toDoList.sort((a, b) {
+      _toDoListCompras.sort((a, b) {
         if (a["ok"] && !b["ok"])
           return 1;
         else if (!a["ok"] && b["ok"])
@@ -65,15 +64,15 @@ class _ComprasScreenState extends State<ComprasScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      //Cor backGround
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        //title: TextStyle(color: Colors.blue)
+        //title: TextStyle(color: Colors.white)
         title: Text(
-          "Lista de Compras",
+          "Compras", //Cor do título - Lista Geral
           style: TextStyle(color: Colors.white, fontSize: 23.0),
         ),
-        //Cor app bar
-        //backgroundColor: Color.fromARGB(100, 52, 175, 35),
+        //Cor do appBar
         backgroundColor: Colors.green[500],
         centerTitle: true,
         actions: <Widget>[
@@ -83,10 +82,10 @@ class _ComprasScreenState extends State<ComprasScreen> {
               color: Colors.white,
             ),
             onPressed: () {
-              openAnoteScreen();
+              openComprasScreen();
             },
             padding: EdgeInsets.only(right: 20),
-          )
+          ),
         ],
       ),
       body: Column(
@@ -97,17 +96,20 @@ class _ComprasScreenState extends State<ComprasScreen> {
               children: <Widget>[
                 Expanded(
                   child: TextField(
-                    controller: _toDoController,
+                    controller: _toDoControllerCompras,
                     decoration: InputDecoration(
-                      labelText: "Suas Compras",
+                      labelText: "Suas Compras:",
                       labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 20.0),
+                          //Cor do texto  - Nova Tarefa
+                          TextStyle(color: Colors.black, fontSize: 20),
                       border: OutlineInputBorder(),
                     ),
                   ),
                 ),
                 RaisedButton(
+                  //Cor do bottão adicionar
                   color: Colors.green[600],
+                  //Cor do text do botão - Adicionar
                   child: Text("Adicionar"),
                   textColor: Colors.white,
                   onPressed: _addToDo,
@@ -118,11 +120,11 @@ class _ComprasScreenState extends State<ComprasScreen> {
           Expanded(
             child: RefreshIndicator(
               onRefresh: _refresh,
-              backgroundColor:  Colors.green[700],
-              //color: Colors.pink,
+              // Altera a cor do Refresh
+              backgroundColor: Colors.green[700],
               child: ListView.builder(
                   padding: EdgeInsets.only(top: 10.0),
-                  itemCount: _toDoList.length,
+                  itemCount: _toDoListCompras.length,
                   itemBuilder: buildItem),
             ),
           )
@@ -136,88 +138,91 @@ class _ComprasScreenState extends State<ComprasScreen> {
     return Dismissible(
       key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
       background: Container(
-        // Altera a cor do fundo para exclusão
-        color: Colors.green[400],
+        // Altera a cor do backGround para exclusão
+        color: Colors.red[600],
         child: Align(
           alignment: Alignment(-0.9, 0.0),
-          child:
-              Icon(Icons.delete, size: 40.0, color: Colors.red // cor da Lixeira
-                  ),
+          child: Icon(Icons.delete,
+              size: 40.0, color: Colors.white // cor da Lixeira
+              ),
         ),
       ),
       direction: DismissDirection.startToEnd,
       child: CheckboxListTile(
-        title: Text(_toDoList[index]["title"]),
-        // cor da caixa checkBox
+        title: Text(_toDoListCompras[index]["title"]),
         activeColor: Colors.green[700],
-        value: _toDoList[index]["ok"],
+        // cor da caixa do checkBox
+        value: _toDoListCompras[index]["ok"],
         secondary: CircleAvatar(
           backgroundColor: Colors.green[700], // Cor interior CicleAvatar
           foregroundColor: Colors.white, // cor do icone
-          child: Icon(_toDoList[index]["ok"]
-              ? Icons.add_shopping_cart
-              : Icons.shopping_cart),
+          child:
+              Icon(_toDoListCompras[index]["ok"] ? Icons.thumb_up : Icons.mode_edit),
         ),
-        onChanged: (c) {
+        onChanged: (compras) {
           setState(() {
-            _toDoList[index]["ok"] = c;
+            _toDoListCompras[index]["ok"] = compras;
             _saveData();
           });
         },
       ),
       onDismissed: (direction) {
         setState(() {
-          _lastRemoved = Map.from(_toDoList[index]);
-          _lastRemovedPos = index;
-          _toDoList.removeAt(index);
+          _lastRemovedCompras = Map.from(_toDoListCompras[index]);
+          _lastRemovedPosCompras = index;
+          _toDoListCompras.removeAt(index);
           _saveData();
 
-          //          final snack = SnackBar(
-          SnackBar(
-            backgroundColor: Colors.black38, // cor da Barra de tarefa
+          final snack = SnackBar(
+            //SnackBar(
+            backgroundColor: Colors.black38,
+            // cor da Barra de tarefa
             content: Text(
-              "Item: \"${_lastRemoved["title"]}\" removida!",
+              "Item: \"${_lastRemovedCompras["title"]}\" removida!",
               style: TextStyle(color: Colors.white, fontSize: 16.0),
-            ), // cor do texto
+            ),
+            // cor do texto
             action: SnackBarAction(
                 label: "Desfazer",
-                textColor: Colors.red, // Cor do Label (rótulo) desfazer
+                textColor: Colors.white,
+                // Cor do Label (rótulo) desfazer
                 onPressed: () {
                   setState(() {
-                    _toDoList.insert(_lastRemovedPos, _lastRemoved);
+                    _toDoListCompras.insert(_lastRemovedPosCompras, _lastRemovedCompras);
                     _saveData();
                   });
                 }),
             duration: Duration(seconds: 4),
           );
-          //Scaffold.of(context).showSnackBar(snack);
-          Scaffold.of(context).reassemble();
+          Scaffold.of(context).removeCurrentSnackBar();
+          Scaffold.of(context).showSnackBar(snack);
         });
       },
     );
   }
 
-  Future<File> _getFile() async {
+  Future<File> _getFile2() async {
     final directory = await getApplicationDocumentsDirectory();
-    return File("${directory.path}/tarefanew.json");
+    return File("${directory.path}/compra.json");
   }
 
   Future<File> _saveData() async {
-    String data = json.encode(_toDoList);
-    final file = await _getFile();
+    String data = json.encode(_toDoListCompras);
+    final file = await _getFile2();
     return file.writeAsString(data);
   }
 
   Future<String> _readData() async {
     try {
-      final file = await _getFile();
+      final file = await _getFile2();
 
       return file.readAsString();
     } catch (e) {
       return null;
     }
   }
-  void openAnoteScreen(){
+
+  void openComprasScreen() {
     ScreenNavigator.screenNavigatorWithContext(context, AnoteScreen());
   }
 }

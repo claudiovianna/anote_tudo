@@ -9,7 +9,6 @@ import 'package:path_provider/path_provider.dart';
 import 'compras_screen.dart';
 import 'perguntas_respostas.dart';
 
-//Teste commit
 
 class AnoteScreen extends StatefulWidget {
   @override
@@ -185,8 +184,8 @@ class _AnoteScreenState extends State<AnoteScreen> {
           _toDoList.removeAt(index);
           _saveData();
 
-          //final snack = SnackBar(
-          SnackBar(
+          final snack = SnackBar(
+          //SnackBar(
             backgroundColor: Colors.black38,
             // cor da Barra de tarefa
             content: Text(
@@ -206,8 +205,8 @@ class _AnoteScreenState extends State<AnoteScreen> {
                 }),
             duration: Duration(seconds: 4),
           );
-          //Scaffold.of(context).showSnackBar(snack);
-          Scaffold.of(context).reassemble();
+          Scaffold.of(context).removeCurrentSnackBar();
+          Scaffold.of(context).showSnackBar(snack);
         });
       },
     );
@@ -217,6 +216,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
     final directory = await getApplicationDocumentsDirectory();
     return File("${directory.path}/tarefa.json");
   }
+
 
   Future<File> _saveData() async {
     String data = json.encode(_toDoList);
