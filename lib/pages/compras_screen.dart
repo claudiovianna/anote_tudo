@@ -159,7 +159,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
           backgroundColor: Colors.green[700], // Cor interior CicleAvatar
           foregroundColor: Colors.white, // cor do icone
           child:
-              Icon(_toDoListCompras[index]["ok"] ? Icons.thumb_up : Icons.mode_edit),
+              Icon(_toDoListCompras[index]["ok"] ? Icons.shopping_cart : Icons.add_shopping_cart),
         ),
         onChanged: (compras) {
           setState(() {
