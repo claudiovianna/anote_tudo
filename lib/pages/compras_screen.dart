@@ -106,6 +106,8 @@ class _ComprasScreenState extends State<ComprasScreen> {
                     ),
                   ),
                 ),
+                Padding(padding: EdgeInsets.only(left: 2),
+                ),
                 RaisedButton(
                   //Cor do bottão adicionar
                   color: Colors.green[600],

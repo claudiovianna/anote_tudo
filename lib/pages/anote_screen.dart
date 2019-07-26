@@ -64,6 +64,8 @@ class _AnoteScreenState extends State<AnoteScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       //Cor backGround
       backgroundColor: Colors.grey[200],
@@ -106,6 +108,8 @@ class _AnoteScreenState extends State<AnoteScreen> {
                       border: OutlineInputBorder(),
                     ),
                   ),
+                ),
+                Padding(padding: EdgeInsets.only(left: 2),
                 ),
                 RaisedButton(
                   //Cor do bottão adicionar
@@ -202,16 +206,29 @@ class _AnoteScreenState extends State<AnoteScreen> {
     );
   }
 
+
+
   Future<File> _getFile() async {
-    final directory = await getApplicationDocumentsDirectory();
-    return File("${directory.path}/tarefa.json");
+    try{
+      final directory = await getApplicationDocumentsDirectory();
+      return File("${directory.path}/tarefa.json");
+    }catch (e){
+      print("Erro no _getFile: $e");
+      return null;
+    }
+
   }
 
 
   Future<File> _saveData() async {
-    String data = json.encode(_toDoList);
-    final file = await _getFile();
-    return file.writeAsString(data);
+    try{
+      String data = json.encode(_toDoList);
+      final file = await _getFile();
+      return file.writeAsString(data);
+    }catch (e){
+      print("Erro no _saveData: $e");
+      return null;
+    }
   }
 
   Future<String> _readData() async {
@@ -220,6 +237,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
 
       return file.readAsString();
     } catch (e) {
+      print("Erro no _readData: $e");
       return null;
     }
   }
