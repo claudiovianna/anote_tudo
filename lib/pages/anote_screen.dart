@@ -87,16 +87,6 @@ class _AnoteScreenState extends State<AnoteScreen> {
               },
             padding: EdgeInsets.only(right: 20),
           ),
-          IconButton(
-            icon: Icon(
-              Icons.help_outline,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              openPerguntasRespostas();
-            },
-            padding: EdgeInsets.only(right: 20),
-          )
         ],
       ),
       body: Column(
