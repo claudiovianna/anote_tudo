@@ -19,28 +19,20 @@ class DrawerList extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(bottom: 8.0),
                   padding: EdgeInsets.fromLTRB(0.0, 20.0, 16.0, 0.0),
-                  height: 170,
+                  height: 150,
                   child: Stack(
                     children: <Widget>[
                       Positioned(
-                        top: 10,
-                        left: 40,
-                        right: 10,
+                        top: 20,
+                        left: 0,
+                        right: 0,
                         child:
 
                         Column(
                           children: <Widget>[
-                            _blocoNotas(),
-                            Container(
-                              padding: EdgeInsets.only(right: 12),
-                              child: Text(
-                                "Anote Tudo!",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.green[800],
-                                    fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                            Container(child: _blocoNotas(),
+                                height: 80,
+                                width: 180,
                             ),
                           ],
                         ),
@@ -64,12 +56,14 @@ class DrawerList extends StatelessWidget {
               title: Text(
                 "Tarefas",
                 style: TextStyle(
-                  fontSize: 22.0,
+                  fontSize: 18,
                   color: Colors.black,
                 ),
               ),
               subtitle: Text(
-                "Sua lista de tarefas",
+                "Sua lista de tarefas", style: TextStyle(
+                fontSize: 14,
+              ),
               ),
               leading: Icon(
                 Icons.mode_edit,
@@ -86,12 +80,14 @@ class DrawerList extends StatelessWidget {
               title: Text(
                 "Compras",
                 style: TextStyle(
-                  fontSize: 22.0,
+                  fontSize: 18,
                   color: Colors.black,
                 ),
               ),
               subtitle: Text(
-                "Sua lista de compras",
+                "Sua lista de compras",style: TextStyle(
+                fontSize: 14,
+              ),
               ),
               leading: Icon(
                 Icons.add_shopping_cart,
@@ -108,12 +104,14 @@ class DrawerList extends StatelessWidget {
               title: Text(
                 "Termo de Uso e Responsabilidade",
                 style: TextStyle(
-                  fontSize: 22.0,
+                  fontSize: 18,
                   color: Colors.black,
                 ),
               ),
               subtitle: Text(
-                "Informações Legais do app",
+                "Informações Legais do app",style: TextStyle(
+                fontSize: 14,
+              ),
               ),
               leading: Icon(
                 Icons.error,
@@ -130,12 +128,14 @@ class DrawerList extends StatelessWidget {
               title: Text(
                 "Perguntas e Respostas",
                 style: TextStyle(
-                  fontSize: 22.0,
+                  fontSize: 18,
                   color: Colors.black,
                 ),
               ),
               subtitle: Text(
-                "Informações de funcionamento do app",
+                "Informações de funcionamento do app",style: TextStyle(
+                fontSize: 14,
+              ),
               ),
               leading: Icon(
                 Icons.help_outline,
@@ -148,7 +148,10 @@ class DrawerList extends StatelessWidget {
       ),
     );
   }
+//  Image _blocoNotas() {
+//    return Image.asset("assets/images/bloco_de_notas.png", fit: BoxFit.none);
+//  }
   Image _blocoNotas() {
-    return Image.asset("assets/images/bloco_de_notas.png", fit: BoxFit.none);
+    return Image.asset("assets/images/logo.png", fit: BoxFit.fill);
   }
 }
