@@ -3,7 +3,7 @@ import 'package:anote_tudo/pages/anote_screen.dart';
 import 'package:anote_tudo/pages/perguntas_respostas.dart';
 import 'package:anote_tudo/pages/termo_responsabilidade.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+//import 'package:flutter/services.dart';
 
 class DrawerList extends StatelessWidget {
   @override
@@ -14,7 +14,7 @@ class DrawerList extends StatelessWidget {
 //        padding: EdgeInsets.fromLTRB(0.0, 16.0, 16.0, 8.0),
         //width: 300,
         width: 300,
-        color: Colors.grey[500],
+        color: Colors.grey[350],
         child: ListView(
           children: <Widget>[
             Column(
@@ -40,7 +40,7 @@ class DrawerList extends StatelessWidget {
                       ),
                     ],
                   ),
-                  color: Colors.grey[400],
+                  color: Colors.grey[200],
                 ),
               ],
             ),
@@ -67,7 +67,7 @@ class DrawerList extends StatelessWidget {
               leading: Icon(
                 Icons.mode_edit,
                 size: 40.0,
-                color: Colors.grey[900],
+                color: Colors.grey[800],
               ),
             ),
             ListTile(
@@ -89,7 +89,7 @@ class DrawerList extends StatelessWidget {
               leading: Icon(
                 Icons.add_shopping_cart,
                 size: 40.0,
-                color: Colors.green[800],
+                color: Colors.grey[800],
               ),
             ),
             ListTile(
@@ -111,7 +111,7 @@ class DrawerList extends StatelessWidget {
               leading: Icon(
                 Icons.error,
                 size: 40.0,
-                color: Colors.amber[300],
+                color: Colors.grey[800],
               ),
             ),
             ListTile(
@@ -133,27 +133,7 @@ class DrawerList extends StatelessWidget {
               leading: Icon(
                 Icons.help_outline,
                 size: 40.0,
-                color: Colors.brown[800],
-              ),
-            ),
-            ListTile(
-              onTap: () {
-                SystemNavigator.pop();
-              },
-              title: Text(
-                "Sair",
-                style: TextStyle(
-                  fontSize: 22.0,
-                  color: Colors.black,
-                ),
-              ),
-              subtitle: Text(
-                "Sair do aplicativo",
-              ),
-              leading: Icon(
-                Icons.close,
-                size: 40.0,
-                color: Colors.red[900],
+                color: Colors.grey[800],
               ),
             ),
           ],

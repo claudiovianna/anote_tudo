@@ -73,7 +73,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
           style: TextStyle(color: Colors.white, fontSize: 23.0),
         ),
         //Cor do appBar
-        backgroundColor: Colors.green[500],
+        backgroundColor: Colors.green[400],
         centerTitle: true,
         actions: <Widget>[
           IconButton(
@@ -110,7 +110,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
                 ),
                 RaisedButton(
                   //Cor do bottão adicionar
-                  color: Colors.green[600],
+                  color: Colors.green[400],
                   //Cor do text do botão - Adicionar
                   child: Text("Adicionar"),
                   textColor: Colors.white,
@@ -177,7 +177,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
 
           final snack = SnackBar(
             //SnackBar(
-            backgroundColor:  Colors.green[500],
+            backgroundColor:  Colors.green[400],
             // cor da Barra de tarefa
             content: Text(
               "Item: \"${_lastRemovedCompras["title"]}\" removido!",
@@ -194,7 +194,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
                     _saveData();
                   });
                 }),
-            duration: Duration(seconds: 4),
+            duration: Duration(seconds: 6),
           );
           Scaffold.of(context).removeCurrentSnackBar();
           Scaffold.of(context).showSnackBar(snack);

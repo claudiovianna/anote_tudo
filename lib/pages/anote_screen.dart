@@ -76,7 +76,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
           style: TextStyle(color: Colors.white, fontSize: 23.0),
         ),
         //Cor do appBar
-        backgroundColor: Colors.grey[700],
+        backgroundColor: Colors.green[400],
         centerTitle: true,
         actions: <Widget>[
           IconButton(
@@ -113,7 +113,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
                 ),
                 RaisedButton(
                   //Cor do bottão adicionar
-                  color: Colors.grey[900],
+                  color: Colors.green[400],
                   //Cor do text do botão - Adicionar
                   child: Text("Adicionar"),
                   textColor: Colors.white,
@@ -159,7 +159,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
         // cor da caixa do checkBox
         value: _toDoList[index]["ok"],
         secondary: CircleAvatar(
-          backgroundColor: Colors.grey[800], // Cor interior CicleAvatar
+          backgroundColor: Colors.green[700], // Cor interior CicleAvatar
           foregroundColor: Colors.white, // cor do icone
           child:
               Icon(_toDoList[index]["ok"] ? Icons.thumb_up : Icons.mode_edit),
@@ -180,7 +180,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
 
           final snack = SnackBar(
           //SnackBar(
-            backgroundColor: Colors.grey[700],
+            backgroundColor: Colors.green[400],
             // cor da Barra de tarefa
             content: Text(
               "Item: \"${_lastRemoved["title"]}\" removido!",
@@ -197,7 +197,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
                     _saveData();
                   });
                 }),
-            duration: Duration(seconds: 4),
+            duration: Duration(seconds: 6),
           );
           Scaffold.of(context).removeCurrentSnackBar();
           Scaffold.of(context).showSnackBar(snack);

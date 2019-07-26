@@ -13,7 +13,7 @@ class PerguntasRespostas extends StatelessWidget {
             fontSize: 20.0,
           ),
         ),
-        backgroundColor: Colors.brown,
+        backgroundColor: Colors.green[400],
         centerTitle: true,
       ),
       body: SingleChildScrollView(
