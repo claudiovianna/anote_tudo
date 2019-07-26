@@ -98,7 +98,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
                   child: TextField(
                     controller: _toDoControllerCompras,
                     decoration: InputDecoration(
-                      labelText: "Suas Compras:",
+                      labelText: "Suas compras:",
                       labelStyle:
                           //Cor do texto  - Nova Tarefa
                           TextStyle(color: Colors.black, fontSize: 20),
@@ -175,10 +175,10 @@ class _ComprasScreenState extends State<ComprasScreen> {
 
           final snack = SnackBar(
             //SnackBar(
-            backgroundColor: Colors.black38,
+            backgroundColor:  Colors.green[500],
             // cor da Barra de tarefa
             content: Text(
-              "Item: \"${_lastRemovedCompras["title"]}\" removida!",
+              "Item: \"${_lastRemovedCompras["title"]}\" removido!",
               style: TextStyle(color: Colors.white, fontSize: 16.0),
             ),
             // cor do texto

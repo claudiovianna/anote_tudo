@@ -109,7 +109,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
                   child: TextField(
                     controller: _toDoController,
                     decoration: InputDecoration(
-                      labelText: "Suas tarefas aqui:",
+                      labelText: "Suas tarefas:",
                       labelStyle:
                           //Cor do texto  - Nova Tarefa
                           TextStyle(color: Colors.black, fontSize: 20),
@@ -186,16 +186,16 @@ class _AnoteScreenState extends State<AnoteScreen> {
 
           final snack = SnackBar(
           //SnackBar(
-            backgroundColor: Colors.black38,
+            backgroundColor: Colors.grey[700],
             // cor da Barra de tarefa
             content: Text(
-              "Item: \"${_lastRemoved["title"]}\" removida!",
+              "Item: \"${_lastRemoved["title"]}\" removido!",
               style: TextStyle(color: Colors.white, fontSize: 16.0),
             ),
             // cor do texto
             action: SnackBarAction(
                 label: "Desfazer",
-                textColor: Colors.red,
+                textColor: Colors.white,
                 // Cor do Label (rótulo) desfazer
                 onPressed: () {
                   setState(() {
