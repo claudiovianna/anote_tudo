@@ -1,4 +1,4 @@
-package br.com.brasilrace.anote_tudo;
+package br.com.cast4.AnoteTudo;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
