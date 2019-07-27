@@ -1,7 +1,7 @@
 import 'package:anote_tudo/pages/compras_screen.dart';
 import 'package:anote_tudo/pages/anote_screen.dart';
 import 'package:anote_tudo/pages/perguntas_respostas.dart';
-import 'package:anote_tudo/pages/termo_responsabilidade.dart';
+import 'package:anote_tudo/pages/termos_de_uso.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter/services.dart';
 
@@ -99,7 +99,7 @@ class DrawerList extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => TermoUso()));
+                    MaterialPageRoute(builder: (context) => TermosDeUso()));
               },
               title: Text(
                 "Termo de Uso",

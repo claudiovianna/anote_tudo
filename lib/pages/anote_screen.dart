@@ -9,6 +9,8 @@ import 'package:path_provider/path_provider.dart';
 import 'compras_screen.dart';
 import 'perguntas_respostas.dart';
 
+import 'package:firebase_admob/firebase_admob.dart';
+
 
 class AnoteScreen extends StatefulWidget {
   @override

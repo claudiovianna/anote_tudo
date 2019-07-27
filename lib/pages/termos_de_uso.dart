@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TermoUso extends StatelessWidget {
+class TermosDeUso extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
