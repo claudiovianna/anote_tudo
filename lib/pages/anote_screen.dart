@@ -9,7 +9,7 @@ import 'package:path_provider/path_provider.dart';
 import 'compras_screen.dart';
 import 'perguntas_respostas.dart';
 
-
+//Apagar depois
 class AnoteScreen extends StatefulWidget {
   @override
   _AnoteScreenState createState() => _AnoteScreenState();
