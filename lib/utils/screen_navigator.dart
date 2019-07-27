@@ -5,9 +5,12 @@ class ScreenNavigator{
 
   static void screenNavigatorWithContext(BuildContext contextOrigin, Widget screen){
     final context = contextOrigin;
-    Navigator.push(context, MaterialPageRoute(builder: (context){
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
       return screen;
     }));
+//    Navigator.push(context, MaterialPageRoute(builder: (context){
+//      return screen;
+//    }));
   }
 
 

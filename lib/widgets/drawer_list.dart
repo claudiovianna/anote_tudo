@@ -50,7 +50,7 @@ class DrawerList extends StatelessWidget {
             ListTile(
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).push(
+                Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => AnoteScreen()));
               },
               title: Text(
@@ -74,7 +74,7 @@ class DrawerList extends StatelessWidget {
             ListTile(
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).push(
+                Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => ComprasScreen()));
               },
               title: Text(
@@ -98,8 +98,8 @@ class DrawerList extends StatelessWidget {
             ListTile(
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => TermoUso()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => TermoUso()));
               },
               title: Text(
                 "Termo de Uso e Responsabilidade",
