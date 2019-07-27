@@ -9,7 +9,7 @@ class TermoUso extends StatelessWidget {
       appBar: AppBar(
         //title: TextStyle(color: Colors.blue)
         title: Text(
-          "Termos e Responsabilidade",
+          "Termos de Uso",
           style: TextStyle(color: Colors.white, fontSize: 23.0),
         ),
         //Cor app bar

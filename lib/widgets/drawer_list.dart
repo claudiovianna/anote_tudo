@@ -102,7 +102,7 @@ class DrawerList extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => TermoUso()));
               },
               title: Text(
-                "Termo de Uso e Responsabilidade",
+                "Termo de Uso",
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.black,
