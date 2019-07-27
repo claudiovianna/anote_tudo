@@ -104,7 +104,7 @@ class DrawerList extends StatelessWidget {
               title: Text(
                 "Termo de Uso e Responsabilidade",
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Colors.black,
                 ),
               ),
