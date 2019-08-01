@@ -1,23 +1,67 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:anote_tudo/utils/screen_navigator.dart';
 import 'package:anote_tudo/widgets/drawer_list.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_admob/firebase_admob.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'compras_screen.dart';
 import 'perguntas_respostas.dart';
 
-import 'package:firebase_admob/firebase_admob.dart';
+const appId = "ca-app-pub-7751208694726247~7431147785";
 
+MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+  keywords: <String>['bloco', 'palavras', 'listas', 'compras'],
+  contentUrl: 'https://flutter.io',
+  //birthday: DateTime.now(),
+  childDirected: false,
+  //designedForFamilies: false,
+  //gender: MobileAdGender.male, // or MobileAdGender.female, MobileAdGender.unknown
+  testDevices: <String>[], // Android emulators are considered test devices
+);
+
+BannerAd myBanner = BannerAd(
+  //*** Replace the testAdUnitId with an ad unit id from the AdMob dash.
+  // https://developers.google.com/admob/android/test-ads
+  // https://developers.google.com/admob/ios/test-ads
+  adUnitId: BannerAd.testAdUnitId,
+  //adUnitId: "ca-app-pub-7751208694726247/9742929435",
+  size: AdSize.smartBanner,
+  //targetingInfo: targetingInfo,
+  listener: (MobileAdEvent event) {
+    print("BannerAd evento $event");
+  },
+);
+
+InterstitialAd myInterstitial = InterstitialAd(
+  //*** Replace the testAdUnitId with an ad unit id from the AdMob dash.
+  // https://developers.google.com/admob/android/test-ads
+  // https://developers.google.com/admob/ios/test-ads
+  adUnitId: InterstitialAd.testAdUnitId,
+  targetingInfo: targetingInfo,
+  listener: (MobileAdEvent event) {
+    print("InterstitialAd evento anote $event");
+  },
+);
 
 class AnoteScreen extends StatefulWidget {
+  AnoteScreen({Key key, this.title, this.analytics, this.observer})
+      : super(key: key);
+  final String title;
+  final FirebaseAnalytics analytics;
+  final FirebaseAnalyticsObserver observer;
+
   @override
-  _AnoteScreenState createState() => _AnoteScreenState();
+  _AnoteScreenState createState() => _AnoteScreenState(analytics, observer);
 }
 
 class _AnoteScreenState extends State<AnoteScreen> {
+  _AnoteScreenState(this.analytics, this.observer);
+  final FirebaseAnalyticsObserver observer;
+  final FirebaseAnalytics analytics;
+
   final _toDoController = TextEditingController();
 
   List _toDoList = [];
@@ -26,6 +70,8 @@ class _AnoteScreenState extends State<AnoteScreen> {
 
   @override
   void initState() {
+    FirebaseAdMob.instance.initialize(appId: appId);
+    myBanner..load();
     super.initState();
 
     _readData().then((data) {
@@ -66,8 +112,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-
+    myBanner..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
     return Scaffold(
       //Cor backGround
       backgroundColor: Colors.grey[200],
@@ -88,7 +133,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
             ),
             onPressed: () {
               openComprasScreen();
-              },
+            },
             padding: EdgeInsets.only(right: 20),
           ),
         ],
@@ -111,7 +156,8 @@ class _AnoteScreenState extends State<AnoteScreen> {
                     ),
                   ),
                 ),
-                Padding(padding: EdgeInsets.only(left: 2),
+                Padding(
+                  padding: EdgeInsets.only(left: 2),
                 ),
                 RaisedButton(
                   //Cor do bottão adicionar
@@ -134,7 +180,8 @@ class _AnoteScreenState extends State<AnoteScreen> {
                   itemCount: _toDoList.length,
                   itemBuilder: buildItem),
             ),
-          )
+          ),
+          //banner(context, child)
         ],
       ),
       drawer: DrawerList(),
@@ -181,7 +228,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
           _saveData();
 
           final snack = SnackBar(
-          //SnackBar(
+            //SnackBar(
             backgroundColor: Colors.green[400],
             // cor da Barra de tarefa
             content: Text(
@@ -208,26 +255,22 @@ class _AnoteScreenState extends State<AnoteScreen> {
     );
   }
 
-
-
   Future<File> _getFile() async {
-    try{
+    try {
       final directory = await getApplicationDocumentsDirectory();
       return File("${directory.path}/tarefa.json");
-    }catch (e){
+    } catch (e) {
       print("Erro no _getFile: $e");
       return null;
     }
-
   }
 
-
   Future<File> _saveData() async {
-    try{
+    try {
       String data = json.encode(_toDoList);
       final file = await _getFile();
       return file.writeAsString(data);
-    }catch (e){
+    } catch (e) {
       print("Erro no _saveData: $e");
       return null;
     }
@@ -248,7 +291,14 @@ class _AnoteScreenState extends State<AnoteScreen> {
   void openPerguntasRespostas() {
     ScreenNavigator.screenNavigatorWithContext(context, PerguntasRespostas());
   }
-  void openComprasScreen(){
+
+  void openComprasScreen() {
     ScreenNavigator.screenNavigatorWithContext(context, ComprasScreen());
+  }
+
+  @override
+  void dispose() {
+    myBanner?.dispose();
+    super.dispose();
   }
 }

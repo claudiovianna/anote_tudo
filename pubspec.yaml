@@ -17,6 +17,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   path_provider: ^1.2.0
   firebase_admob: ^0.9.0+3
+  firebase_core: ^0.4.0+8
+  firebase_analytics: ^4.0.2
 
 
 
@@ -39,7 +41,6 @@ flutter:
   assets:
      - assets/images/caderno_lapis.png
      - assets/images/splash.png
-#     - assets/images/bloco_de_notas.png
      - assets/images/logo.png
 
 
