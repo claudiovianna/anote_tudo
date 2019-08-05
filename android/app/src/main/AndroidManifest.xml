@@ -31,8 +31,8 @@
             </intent-filter>
         </activity>
         //código do ADMOB_APP_ID
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7751208694726247~7431147785"/>
+        <!--<meta-data-->
+            <!--android:name="com.google.android.gms.ads.APPLICATION_ID"-->
+            <!--android:value="ca-app-pub-7751208694726247~7431147785"/>-->
     </application>
 </manifest>

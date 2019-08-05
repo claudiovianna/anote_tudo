@@ -10,7 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'compras_screen.dart';
 import 'perguntas_respostas.dart';
 
-const appId = "ca-app-pub-7751208694726247~7431147785";
+//const appId = "ca-app-pub-7751208694726247~7431147785";
 
 MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
   keywords: <String>['bloco', 'palavras', 'listas', 'compras'],
@@ -29,7 +29,7 @@ BannerAd myBanner = BannerAd(
   adUnitId: BannerAd.testAdUnitId,
   //adUnitId: "ca-app-pub-7751208694726247/9742929435",
   size: AdSize.smartBanner,
-  //targetingInfo: targetingInfo,
+  targetingInfo: targetingInfo,
   listener: (MobileAdEvent event) {
     print("BannerAd evento $event");
   },

@@ -3,8 +3,12 @@ description: Faça suas de compras e ou tarefas do dia e salve em seu celular...
 #desenvolvedor IOs: Claudio Vianna  <claudiolavianna@gmail.com>
 #desenvolvedor Android: Roberto Castro  <robocast1331@gmail.com>
 
+version: 0.1.0+1
+# Tudo que esta antes do sinal de + é o nome da versão e depois é o código da versão.
+#Então aqui o nome para o usuario  é 0.1.0  e o código da versão de controle do app é 1
+#Sempre que você der uma atualização para o aplicativo flutter,
 
-version: 1.0.0+1
+
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

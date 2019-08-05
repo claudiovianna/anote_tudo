@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'anote_screen.dart';
 
-const appId = "ca-app-pub-7751208694726247~7431147785";
+//const appId = "ca-app-pub-7751208694726247~7431147785";
 
 MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
   keywords: <String>['bloco', 'palavras', 'listas', 'compras'],
