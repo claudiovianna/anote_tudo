@@ -10,7 +10,8 @@ import 'package:path_provider/path_provider.dart';
 import 'compras_screen.dart';
 import 'perguntas_respostas.dart';
 
-//const appId = "ca-app-pub-7751208694726247~7431147785";
+const appIdAdMobAndroid = "ca-app-pub-4994376613873903~6675930317";
+const appIdAdMobIos = "ca-app-pub-4994376613873903~5362848641";
 
 MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
   keywords: <String>['bloco', 'palavras', 'listas', 'compras'],
@@ -70,7 +71,14 @@ class _AnoteScreenState extends State<AnoteScreen> {
 
   @override
   void initState() {
-    FirebaseAdMob.instance.initialize(appId: appId);
+    var appIdAdMob;
+    if(Platform.isAndroid){
+      appIdAdMob = appIdAdMobAndroid;
+    }else if(Platform.isIOS){
+      appIdAdMob = appIdAdMobIos;
+    }
+    FirebaseAdMob.instance.initialize(appId: appIdAdMob);
+
     myBanner..load();
     super.initState();
 

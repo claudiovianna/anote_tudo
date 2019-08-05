@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "709618578067",
+    "firebase_url": "https://anote-tudo-beb70.firebaseio.com",
+    "project_id": "anote-tudo-beb70",
+    "storage_bucket": "anote-tudo-beb70.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709618578067:android:f74bde49df6f6dfd",
+        "android_client_info": {
+          "package_name": "br.com.cast4.AnoteTudo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709618578067-0icrjoieqln33d7rfhsddben24a0equa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDO2cIRo1wl8q7mBsma_xYLG0pUXImhKDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709618578067-0icrjoieqln33d7rfhsddben24a0equa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "709618578067-jj8ejk2bht2i3qb9aqjicp3mhabjli7s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.cast4.AnoteTudo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
