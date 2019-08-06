@@ -32,5 +32,7 @@
 	<string>1:709618578067:ios:f74bde49df6f6dfd</string>
 	<key>DATABASE_URL</key>
 	<string>https://anote-tudo-beb70.firebaseio.com</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-4994376613873903~5362848641</string>
 </dict>
 </plist>

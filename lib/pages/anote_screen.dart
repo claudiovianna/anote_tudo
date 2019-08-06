@@ -28,7 +28,10 @@ BannerAd myBanner = BannerAd(
   // https://developers.google.com/admob/android/test-ads
   // https://developers.google.com/admob/ios/test-ads
   adUnitId: BannerAd.testAdUnitId,
+  //Android
   //adUnitId: "ca-app-pub-7751208694726247/9742929435",
+  //iOS
+  //adUnitId: "ca-app-pub-4994376613873903/7574079016",
   size: AdSize.smartBanner,
   targetingInfo: targetingInfo,
   listener: (MobileAdEvent event) {
