@@ -10,34 +10,35 @@ import 'package:path_provider/path_provider.dart';
 import 'compras_screen.dart';
 import 'perguntas_respostas.dart';
 
-const appIdAdMobAndroid = "ca-app-pub-4994376613873903~6675930317";
-const appIdAdMobIos = "ca-app-pub-4994376613873903~5362848641";
+const String appIdAdMobAndroid = "ca-app-pub-4994376613873903~6675930317";
+const String appIdAdMobIos = "ca-app-pub-4994376613873903~5362848641";
 
-MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-  keywords: <String>['bloco', 'palavras', 'listas', 'compras'],
-  contentUrl: 'https://flutter.io',
-  //birthday: DateTime.now(),
-  childDirected: false,
-  //designedForFamilies: false,
-  //gender: MobileAdGender.male, // or MobileAdGender.female, MobileAdGender.unknown
-  testDevices: <String>[], // Android emulators are considered test devices
-);
 
-BannerAd myBanner = BannerAd(
-  //*** Replace the testAdUnitId with an ad unit id from the AdMob dash.
-  // https://developers.google.com/admob/android/test-ads
-  // https://developers.google.com/admob/ios/test-ads
-  adUnitId: BannerAd.testAdUnitId,
-  //Android
-  //adUnitId: "ca-app-pub-7751208694726247/9742929435",
-  //iOS
-  //adUnitId: "ca-app-pub-4994376613873903/7574079016",
-  size: AdSize.smartBanner,
-  targetingInfo: targetingInfo,
-  listener: (MobileAdEvent event) {
-    print("BannerAd evento $event");
-  },
-);
+//MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+//  keywords: <String>['bloco', 'palavras', 'listas', 'compras'],
+//  contentUrl: 'https://flutter.io',
+//  //birthday: DateTime.now(),
+//  childDirected: false,
+//  //designedForFamilies: false,
+//  //gender: MobileAdGender.male, // or MobileAdGender.female, MobileAdGender.unknown
+//  testDevices: <String>[], // Android emulators are considered test devices
+//);
+
+//BannerAd myBanner = BannerAd(
+//  //*** Replace the testAdUnitId with an ad unit id from the AdMob dash.
+//  // https://developers.google.com/admob/android/test-ads
+//  // https://developers.google.com/admob/ios/test-ads
+//  adUnitId: BannerAd.testAdUnitId,
+//  //Android
+//  //adUnitId: "ca-app-pub-7751208694726247/9742929435",
+//  //iOS
+//  //adUnitId: "ca-app-pub-4994376613873903/7574079016",
+//  size: AdSize.smartBanner,
+//  targetingInfo: targetingInfo,
+//  listener: (MobileAdEvent event) {
+//    print("BannerAd evento $event");
+//  },
+//);
 
 InterstitialAd myInterstitial = InterstitialAd(
   //*** Replace the testAdUnitId with an ad unit id from the AdMob dash.
@@ -72,8 +73,44 @@ class _AnoteScreenState extends State<AnoteScreen> {
   Map<String, dynamic> _lastRemoved;
   int _lastRemovedPos;
 
+  //>>>>>>>>>>>>>>>>>>>>
+  BannerAd _bannerAd;
+  bool _adShown;
+  static final MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+    testDevices: <String>[BannerAd.testAdUnitId],
+  );
+  BannerAd createBannerAd(){
+    var appIdAdMob;
+    if(Platform.isAndroid){
+      appIdAdMob = appIdAdMobAndroid;
+    }else if(Platform.isIOS){
+      appIdAdMob = appIdAdMobIos;
+    }
+    return BannerAd(
+      //adUnitId: appIdAdMob,
+      adUnitId: BannerAd.testAdUnitId,
+      targetingInfo: targetingInfo,
+      size: AdSize.smartBanner,
+      listener: (MobileAdEvent event){
+        if(event == MobileAdEvent.loaded){
+          _adShown = true;
+          setState(() {
+
+          });
+        }else if(event ==MobileAdEvent.failedToLoad){
+          _adShown = false;
+          setState(() {
+
+          });
+        }
+      }
+    );
+  }
+  //>>>>>>>>>>>>>>>>>>>>
+
   @override
   void initState() {
+    //>>>>>>>>>>>>>>>>>>>>
     var appIdAdMob;
     if(Platform.isAndroid){
       appIdAdMob = appIdAdMobAndroid;
@@ -81,8 +118,11 @@ class _AnoteScreenState extends State<AnoteScreen> {
       appIdAdMob = appIdAdMobIos;
     }
     FirebaseAdMob.instance.initialize(appId: appIdAdMob);
+    _adShown = false;
+    _bannerAd = createBannerAd()..load()..show();
+    //>>>>>>>>>>>>>>>>>>>>
 
-    myBanner..load();
+    //myBanner..load()..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
     super.initState();
 
     _readData().then((data) {
@@ -123,7 +163,15 @@ class _AnoteScreenState extends State<AnoteScreen> {
 
   @override
   Widget build(BuildContext context) {
-    myBanner..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
+    //myBanner..show(anchorOffset: 0.0, anchorType: AnchorType.bottom);
+
+    //>>>>>>>>>>>>>>>>>>>>
+    List<Widget> fakeBottomButtons = List<Widget>();
+    var h = _bannerAd.size.height + 30.00;
+    //fakeBottomButtons.add(Container(height: 50,));
+    fakeBottomButtons.add(Container(height: h,));
+    //>>>>>>>>>>>>>>>>>>>>
+
     return Scaffold(
       //Cor backGround
       backgroundColor: Colors.grey[200],
@@ -195,7 +243,11 @@ class _AnoteScreenState extends State<AnoteScreen> {
           //banner(context, child)
         ],
       ),
+      //>>>>>>>>>>>>>>>>>>>>
+      persistentFooterButtons: _adShown? fakeBottomButtons:null,
+      //>>>>>>>>>>>>>>>>>>>>
       drawer: DrawerList(),
+
     );
   }
 
@@ -309,7 +361,10 @@ class _AnoteScreenState extends State<AnoteScreen> {
 
   @override
   void dispose() {
-    myBanner?.dispose();
+    //myBanner?.dispose();
+    //>>>>>>>>>>>>>>>>>>>>
+    _bannerAd?.dispose();
+    //>>>>>>>>>>>>>>>>>>>>
     super.dispose();
   }
 }
