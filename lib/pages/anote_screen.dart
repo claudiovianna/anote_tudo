@@ -8,21 +8,21 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'compras_screen.dart';
-import 'perguntas_respostas.dart';
+
 
 const String appIdAdMobAndroid = "ca-app-pub-4994376613873903~6675930317";
 const String appIdAdMobIos = "ca-app-pub-4994376613873903~5362848641";
 
 
-//MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-//  keywords: <String>['bloco', 'palavras', 'listas', 'compras'],
-//  contentUrl: 'https://flutter.io',
-//  //birthday: DateTime.now(),
-//  childDirected: false,
-//  //designedForFamilies: false,
-//  //gender: MobileAdGender.male, // or MobileAdGender.female, MobileAdGender.unknown
-//  testDevices: <String>[], // Android emulators are considered test devices
-//);
+MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+  keywords: <String>['bloco', 'palavras', 'listas', 'compras'],
+  contentUrl: 'https://flutter.io',
+  //birthday: DateTime.now(),
+  childDirected: false,
+  //designedForFamilies: false,
+  //gender: MobileAdGender.male, // or MobileAdGender.female, MobileAdGender.unknown
+  testDevices: <String>[], // Android emulators are considered test devices
+);
 
 //BannerAd myBanner = BannerAd(
 //  //*** Replace the testAdUnitId with an ad unit id from the AdMob dash.
@@ -350,10 +350,6 @@ class _AnoteScreenState extends State<AnoteScreen> {
     }
   }
 
-  //Navegação entre paginas
-  void openPerguntasRespostas() {
-    ScreenNavigator.screenNavigatorWithContext(context, PerguntasRespostas());
-  }
 
   void openComprasScreen() {
     ScreenNavigator.screenNavigatorWithContext(context, ComprasScreen());

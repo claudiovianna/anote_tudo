@@ -19,7 +19,7 @@ class PerguntasRespostas extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            //Icon(Icons.lightbulb_outline, ),Text("Ola"),
+            //Icon(Icons.lightbulb_outline, ),Text(""),
             Padding(
               padding: EdgeInsets.only(top: 10),
               ),
