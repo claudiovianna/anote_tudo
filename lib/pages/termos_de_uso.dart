@@ -61,8 +61,8 @@ TERMOS DE USO
     III. Em hipótese alguma, o Anote Tudo, bem como seus programadores, podem ser responsabilizados por perdas de dados ou danos causados pelo uso do Anote Tudo.
 POLITICA DE PRIVACIDADE
 Tipos de dados coletados
-    Nenhum dado é coletado do usuário do Anote Tudo.
-Ultima atualização 27 de julho de 2019 
+    Nenhum dado é coletado do usuário do Anote Tudo.\n
+Ultima atualização 15 de agosto de 2019 
 
 
 

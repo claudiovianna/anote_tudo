@@ -3,7 +3,6 @@ import 'package:anote_tudo/pages/anote_screen.dart';
 import 'package:anote_tudo/pages/perguntas_respostas.dart';
 import 'package:anote_tudo/pages/termos_de_uso.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter/services.dart';
 
 class DrawerList extends StatelessWidget {
   @override
@@ -27,7 +26,6 @@ class DrawerList extends StatelessWidget {
                         left: 0,
                         right: 0,
                         child:
-
                         Column(
                           children: <Widget>[
                             Container(child: _blocoNotas(),
@@ -143,14 +141,31 @@ class DrawerList extends StatelessWidget {
                 color: Colors.grey[800],
               ),
             ),
+            Container(
+                height: 40,
+                width: 200,
+                margin: EdgeInsets.only(top: 15),
+                alignment: Alignment.bottomCenter,
+                child: MaterialButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  onPressed: (){},
+                  color: Colors.green[400],
+                  child: Text("Comprar o aplicativo", style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold
+                  ),
+                  ),
+                )
+            ),
           ],
         ),
       ),
     );
   }
-//  Image _blocoNotas() {
-//    return Image.asset("assets/images/bloco_de_notas.png", fit: BoxFit.none);
-//  }
+
   Image _blocoNotas() {
     return Image.asset("assets/images/logo.png", fit: BoxFit.fill);
   }
