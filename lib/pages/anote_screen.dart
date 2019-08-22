@@ -52,8 +52,16 @@ class _AnoteScreenState extends State<AnoteScreen> {
       newToDo["title"] = _toDoController.text;
       _toDoController.text = "";
       newToDo["ok"] = false;
-      _toDoList.add(newToDo);
-      _saveData();
+      //>>>>>>>CLAUDIO
+      var qtdItens = _toDoList.length + 1;
+      print("Quantidade de itens: $qtdItens");
+      if(qtdItens <= 5){
+        _toDoList.add(newToDo);
+        _saveData();
+      }else{
+        print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
+      }
+      //>>>>>>>CLAUDIO
     });
   }
 

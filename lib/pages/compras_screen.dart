@@ -47,8 +47,16 @@ class _ComprasScreenState extends State<ComprasScreen> {
       newToDo["title"] = _toDoControllerCompras.text;
       _toDoControllerCompras.text = "";
       newToDo["ok"] = false;
-      _toDoListCompras.add(newToDo);
-      _saveData();
+      //>>>>>>>CLAUDIO
+      var qtdItens = _toDoListCompras.length + 1;
+      print("Quantidade de itens: $qtdItens");
+      if(qtdItens <= 5){
+        _toDoListCompras.add(newToDo);
+        _saveData();
+      }else{
+        print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
+      }
+      //>>>>>>>CLAUDIO
     });
   }
 
