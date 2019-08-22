@@ -141,7 +141,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
               // Altera a cor do Refresh
               backgroundColor: Colors.grey[800],
               child: ListView.builder(
-                  padding: EdgeInsets.only(top: 10.0),
+                  padding: EdgeInsets.only(top: 10.0, bottom: 30),
                   itemCount: _toDoList.length,
                   itemBuilder: buildItem),
             ),

@@ -141,31 +141,31 @@ class DrawerList extends StatelessWidget {
                 color: Colors.grey[800],
               ),
             ),
-            Container(
-                height: 40,
-                width: 200,
-                margin: EdgeInsets.only(top: 15),
-                alignment: Alignment.bottomCenter,
-                child: MaterialButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                ListTile(
+                  onTap: () {},
+                  title: Text(
+                    "Tornar se VIP",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
                   ),
-                  onPressed: (){},
-                  color: Colors.green[400],
-                  child: Text("Comprar o aplicativo", style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold
+                  subtitle: Text(
+                    "Na compra do app vc terá todas as funcionalidades liberadas!",style: TextStyle(
+                    fontSize: 14,
                   ),
                   ),
-                )
-            ),
+                  leading: Icon(
+                    Icons.star,
+                    size: 40.0,
+                    color: Colors.grey[800],
+                  ),
+                ),
           ],
         ),
       ),
     );
   }
-
   Image _blocoNotas() {
     return Image.asset("assets/images/logo.png", fit: BoxFit.fill);
   }

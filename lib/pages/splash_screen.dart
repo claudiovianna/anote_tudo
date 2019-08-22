@@ -1,6 +1,8 @@
 import 'dart:async';
-import 'package:anote_tudo/pages/anote_screen.dart';
+import 'package:anote_tudo/pages/tutorial_screen.dart';
 import 'package:flutter/material.dart';
+
+
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -14,7 +16,8 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
       Duration(seconds: 2),
       () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => AnoteScreen(),
+          //MaterialPageRoute(builder: (context) => AnoteScreen(),
+          MaterialPageRoute(builder: (context) => TutorialScreen(),
           )
       ),
 

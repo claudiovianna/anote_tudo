@@ -136,7 +136,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
               // Altera a cor do Refresh
               backgroundColor: Colors.green[700],
               child: ListView.builder(
-                  padding: EdgeInsets.only(top: 10.0),
+                  padding: EdgeInsets.only(top: 10.0, bottom: 30),
                   itemCount: _toDoListCompras.length,
                   itemBuilder: buildItem),
             ),

@@ -64,7 +64,7 @@ class PerguntasRespostas extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 5),
               child: ListTile(
                 title: Text(
-                  "Como atualizar a lista?",
+                  "Como fazer a reorganização dos itens?",
                   style: TextStyle(
                       color: Colors.grey[900], fontSize: 16.0,
                       fontWeight: FontWeight.bold
