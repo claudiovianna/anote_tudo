@@ -2,6 +2,7 @@ import 'package:anote_tudo/pages/splash_screen.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 void main() => runApp(MyApp());
@@ -27,20 +28,20 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Antote Tudo',
+      debugShowCheckedModeBanner: false,
+      title: 'Antote Tudo',
       theme: ThemeData(
           fontFamily: "Roboto",
           primaryColor: Colors.grey[600],
           accentColor: Colors.white,
           cursorColor: Colors.grey[900],
           unselectedWidgetColor:
-              Colors.grey[900], //cor externa da caixa do check box
+          Colors.grey[900], //cor externa da caixa do check box
           canvasColor: Colors.transparent
       ),
-        home:  SplashScreen(),
-
+      home:  SplashScreen(),
     );
   }
+
 }
 

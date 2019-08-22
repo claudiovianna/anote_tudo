@@ -13,5 +13,12 @@ class ScreenNavigator{
 //    }));
   }
 
+  static void screenNavigatorPopWithContext(BuildContext contextOrigin, Widget screen) {
+    final context = contextOrigin;
+    Navigator.pop(context, MaterialPageRoute(builder: (context) {
+      return screen;
+    }));
+  }
+
 
 }

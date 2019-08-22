@@ -24,6 +24,7 @@ dependencies:
   firebase_core: ^0.4.0+8
   firebase_analytics: ^4.0.2
   intro_slider: ^2.2.7
+  shared_preferences: ^0.5.3+4
 
 
 
