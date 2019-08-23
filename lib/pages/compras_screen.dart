@@ -41,6 +41,28 @@ class _ComprasScreenState extends State<ComprasScreen> {
     });
   }
 
+//  void _addToDo() {
+//    setState(() {
+//      Map<String, dynamic> newToDo = Map();
+//      newToDo["title"] = _toDoControllerCompras.text;
+//      //validando campo vazio
+//      if(_toDoControllerCompras.text != ""){
+//        _toDoControllerCompras.text = "";
+//        newToDo["ok"] = false;
+//        //>>>>>>>CLAUDIO
+//        //contando itens da lista
+//        var qtdItens = _toDoListCompras.length + 1;
+//        print("Quantidade de itens: $qtdItens");
+//        if(qtdItens <= 5){
+//          _toDoListCompras.add(newToDo);
+//          _saveData();
+//        }else{
+//          print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
+//        }
+//        //>>>>>>>CLAUDIO
+//      }
+//    });
+//  }
   void _addToDo() {
     setState(() {
       Map<String, dynamic> newToDo = Map();

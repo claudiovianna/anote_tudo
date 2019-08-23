@@ -10,8 +10,6 @@ import 'package:path_provider/path_provider.dart';
 
 import 'compras_screen.dart';
 
-//ccc
-
 
 class AnoteScreen extends StatefulWidget {
   AnoteScreen({Key key, this.title, this.analytics, this.observer})
@@ -46,6 +44,28 @@ class _AnoteScreenState extends State<AnoteScreen> {
     });
   }
 
+//  void _addToDo() {
+//    setState(() {
+//      Map<String, dynamic> newToDo = Map();
+//      newToDo["title"] = _toDoController.text;
+//      //validando campo vazio
+//      if(_toDoController.text != ""){
+//        _toDoController.text = "";
+//        newToDo["ok"] = false;
+//        //>>>>>>>CLAUDIO
+//        //contando itens da lista
+//        var qtdItens = _toDoList.length + 1;
+//        print("Quantidade de itens: $qtdItens");
+//        if(qtdItens <= 5){
+//          _toDoList.add(newToDo);
+//          _saveData();
+//        }else{
+//          print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
+//        }
+//        //>>>>>>>CLAUDIO
+//      }
+//    });
+//  }
   void _addToDo() {
     setState(() {
       Map<String, dynamic> newToDo = Map();
