@@ -50,18 +50,22 @@ class _AnoteScreenState extends State<AnoteScreen> {
     setState(() {
       Map<String, dynamic> newToDo = Map();
       newToDo["title"] = _toDoController.text;
-      _toDoController.text = "";
-      newToDo["ok"] = false;
-      //>>>>>>>CLAUDIO
-      var qtdItens = _toDoList.length + 1;
-      print("Quantidade de itens: $qtdItens");
-      if(qtdItens <= 5){
-        _toDoList.add(newToDo);
-        _saveData();
-      }else{
-        print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
+      //validando campo vazio
+      if(_toDoController.text != ""){
+        _toDoController.text = "";
+        newToDo["ok"] = false;
+        //>>>>>>>CLAUDIO
+        //contando itens da lista
+        var qtdItens = _toDoList.length + 1;
+        print("Quantidade de itens: $qtdItens");
+        if(qtdItens <= 5){
+          _toDoList.add(newToDo);
+          _saveData();
+        }else{
+          print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
+        }
+        //>>>>>>>CLAUDIO
       }
-      //>>>>>>>CLAUDIO
     });
   }
 
