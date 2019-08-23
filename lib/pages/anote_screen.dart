@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:anote_tudo/pages/perguntas_respostas.dart';
+import 'package:anote_tudo/utils/alert_r_flutter.dart';
 import 'package:anote_tudo/utils/screen_navigator.dart';
 import 'package:anote_tudo/widgets/drawer_list.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -9,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'compras_screen.dart';
-
 
 class AnoteScreen extends StatefulWidget {
   AnoteScreen({Key key, this.title, this.analytics, this.observer})
@@ -32,7 +32,6 @@ class _AnoteScreenState extends State<AnoteScreen> {
   List _toDoList = [];
   Map<String, dynamic> _lastRemoved;
   int _lastRemovedPos;
-
 
   @override
   void initState() {
@@ -71,18 +70,27 @@ class _AnoteScreenState extends State<AnoteScreen> {
       Map<String, dynamic> newToDo = Map();
       newToDo["title"] = _toDoController.text;
       //validando campo vazio
-      if(_toDoController.text != ""){
+      if (_toDoController.text != "") {
         _toDoController.text = "";
         newToDo["ok"] = false;
         //>>>>>>>CLAUDIO
         //contando itens da lista
         var qtdItens = _toDoList.length + 1;
         print("Quantidade de itens: $qtdItens");
-        if(qtdItens <= 5){
+        if (qtdItens <= 10) {
           _toDoList.add(newToDo);
           _saveData();
-        }else{
+        } else {
           print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
+          final alert = AlertRFlutter.alertTwoButtons(
+              context,
+              "SEJA VIP",
+              "Essa versão é limitada a 10 itens por lista. Para que você utilize todas as vantagens e sobretudo itens ilimitados nas listas torne-se VIP!",
+              "EU QUERO",
+              "NÃO QUERO");
+          alert
+              .alertWarningWithTwoButtons(openCancelButton, openVipButton)
+              .show();
         }
         //>>>>>>>CLAUDIO
       }
@@ -284,9 +292,15 @@ class _AnoteScreenState extends State<AnoteScreen> {
     }
   }
 
-
   void openComprasScreen() {
     ScreenNavigator.screenNavigatorWithContext(context, ComprasScreen());
   }
 
+  void openVipButton() {
+    ScreenNavigator.screenNavigatorWithContext(context, PerguntasRespostas());
+  }
+
+  void openCancelButton() {
+    ScreenNavigator.screenNavigatorWithContext(context, AnoteScreen());
+  }
 }

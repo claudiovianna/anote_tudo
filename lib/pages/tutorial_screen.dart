@@ -108,7 +108,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
           ScreenNavigator.screenNavigatorWithContext(context, ComprasScreen());
         },
         pathImage: "assets/images/este_seja_bem_vindo.png",
-        description: "Click na imagem!\n\n\n\Ou\n\n\nclique em CONTINUAR FREE",
+        description: "Click na imagem!",
         backgroundColor: Colors.green[300],
       ),
     );

@@ -1,5 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:anote_tudo/pages/perguntas_respostas.dart';
+import 'package:anote_tudo/pages/termos_de_uso.dart';
+import 'package:anote_tudo/utils/alert_r_flutter.dart';
 import 'package:anote_tudo/utils/screen_navigator.dart';
 import 'package:anote_tudo/widgets/drawer_list.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -7,7 +10,6 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'anote_screen.dart';
-
 
 class ComprasScreen extends StatefulWidget {
   ComprasScreen({Key key, this.title, this.analytics, this.observer})
@@ -67,19 +69,27 @@ class _ComprasScreenState extends State<ComprasScreen> {
     setState(() {
       Map<String, dynamic> newToDo = Map();
       newToDo["title"] = _toDoControllerCompras.text;
-      //validando campo vazio
-      if(_toDoControllerCompras.text != ""){
+      //validadndo o campo vazio >>>>>>>> ROBERTO
+      if (_toDoControllerCompras.text != "") {
         _toDoControllerCompras.text = "";
         newToDo["ok"] = false;
         //>>>>>>>CLAUDIO
-        //contando itens da lista
         var qtdItens = _toDoListCompras.length + 1;
         print("Quantidade de itens: $qtdItens");
-        if(qtdItens <= 5){
+        if (qtdItens <= 10) {
           _toDoListCompras.add(newToDo);
           _saveData();
-        }else{
+        } else {
           print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
+          final alert = AlertRFlutter.alertTwoButtons(
+              context,
+              "SEJA VIP",
+              "Essa versão é limitada a 10 itens por lista. Para que você utilize todas as vantagens e sobretudo itens ilimitados nas listas torne-se VIP!",
+              "EU QUERO",
+              "NÃO QUERO");
+          alert
+              .alertWarningWithTwoButtons(openCancelButton, openVipButton)
+              .show();
         }
         //>>>>>>>CLAUDIO
       }
@@ -222,7 +232,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
           _saveData();
 
           final snack = SnackBar(
-          //SnackBar(
+            //SnackBar(
             backgroundColor: Colors.green[400],
             // cor da Barra de tarefa
             content: Text(
@@ -272,7 +282,15 @@ class _ComprasScreenState extends State<ComprasScreen> {
   }
 
   void openComprasScreen() {
-    ScreenNavigator.screenNavigatorWithContext(context, AnoteScreen());
+    ScreenNavigator.screenNavigatorWithContext(
+        context, AnoteScreen());
   }
 
+  void openVipButton() {
+    ScreenNavigator.screenNavigatorWithContext(context, PerguntasRespostas());
+  }
+
+  void openCancelButton() {
+    ScreenNavigator.screenNavigatorWithContext(context, ComprasScreen());
+  }
 }

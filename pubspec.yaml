@@ -25,6 +25,7 @@ dependencies:
   firebase_analytics: ^4.0.2
   intro_slider: ^2.2.7
   shared_preferences: ^0.5.3+4
+  rflutter_alert: ^1.0.2
 
 
 
