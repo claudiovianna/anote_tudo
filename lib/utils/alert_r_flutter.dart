@@ -154,7 +154,7 @@ class AlertRFlutter {
             child: Text(
               titleActionCancelButton,
               style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold),
             ),
@@ -169,7 +169,7 @@ class AlertRFlutter {
             child: Text(
               _titleActionButton,
               style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold),
             ),
@@ -178,7 +178,7 @@ class AlertRFlutter {
               functionOk();
             },
             width: 200,
-            color: Colors.grey[400],
+            color: Colors.green[400],
           ),
         ]
     );

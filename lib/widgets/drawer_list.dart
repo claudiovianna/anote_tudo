@@ -1,8 +1,10 @@
 import 'package:anote_tudo/pages/compras_screen.dart';
 import 'package:anote_tudo/pages/anote_screen.dart';
+import 'package:anote_tudo/pages/itens_de_compra.dart';
 import 'package:anote_tudo/pages/perguntas_respostas.dart';
 import 'package:anote_tudo/pages/termos_de_uso.dart';
 import 'package:flutter/material.dart';
+
 
 class DrawerList extends StatelessWidget {
   @override
@@ -142,7 +144,11 @@ class DrawerList extends StatelessWidget {
               ),
             ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => ItensDeCompra()));
+                  },
                   title: Text(
                     "Tornar se VIP",
                     style: TextStyle(

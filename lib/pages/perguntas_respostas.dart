@@ -83,7 +83,7 @@ class PerguntasRespostas extends StatelessWidget {
                       fontWeight: FontWeight.bold
                   ),
                 ),
-                subtitle: Text("Sim, se seu app foi adquirido no Google Play.", style: TextStyle(color: Colors.grey[700], fontSize: 14.0),),
+                subtitle: Text("Sim, se seu app foi adquirido nas lojas Aplle Store ou Google Play.", style: TextStyle(color: Colors.grey[700], fontSize: 14.0),),
               ),
             ),
             Container(
