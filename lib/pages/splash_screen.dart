@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:anote_tudo/pages/anote_screen.dart';
 import 'package:anote_tudo/pages/tutorial_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -33,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 2), () {
+      Duration(seconds: 1), () {
         _checkFirstSeen();
       }
     );
@@ -42,10 +43,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:  Colors.black,
       body: Stack(
         children: <Widget>[
           SizedBox.expand(
-            child: _caderno(),
+            child: _caderno()
           ),
           Column(
             //mainAxisAlignment: MainAxisAlignment.center,
@@ -83,7 +85,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Image _caderno() {
     //return Image.asset("assets/images/caderno_lapis.png", fit: BoxFit.fill);
-    return Image.asset("assets/images/splash.png", fit: BoxFit.cover);
+    return Image.asset("assets/images/flash_nativo.png",);
   }
 
 

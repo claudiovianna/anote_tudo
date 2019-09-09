@@ -12,7 +12,7 @@ class MarketingPlace extends StatefulWidget {
 class _MarketingPlaceState extends State<MarketingPlace> {
 
   //loja viável
-  bool _available = true;
+  bool _available = false;
   //instância da InAppPurchase
   InAppPurchaseConnection _iap = InAppPurchaseConnection.instance;
   //produtos para venda

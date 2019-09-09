@@ -3,7 +3,7 @@ description: Faça suas de compras e ou tarefas do dia e salve em seu celular...
 #desenvolvedor IOs: Claudio Vianna  <claudiolavianna@gmail.com>
 #desenvolvedor Android: Roberto Castro  <robocast1331@gmail.com>
 
-version: 0.1.0+1
+version: 0.1.0+3
 # Tudo que esta antes do sinal de + é o nome da versão e depois é o código da versão.
 #Então aqui o nome para o usuario  é 0.1.0  e o código da versão de controle do app é 1
 #Sempre mudar o código da versão +1 quando fizer atualização para o aplicativo flutter,
@@ -50,6 +50,7 @@ flutter:
   assets:
      - assets/images/caderno_lapis.png
      - assets/images/splash.png
+     - assets/images/flash_nativo.png
      - assets/images/logo.png
      - assets/images/este_seja_bem_vindo.png
 
