@@ -14,6 +14,27 @@ class ItensDeCompra extends StatefulWidget {
 
 class _ItensDeCompraState extends State<ItensDeCompra> {
 
+  StreamSubscription<List<PurchaseDetails>> _subscription;
+
+  @override
+  void initState() {
+    final Stream purchaseUpdates = InAppPurchaseConnection.instance.purchaseUpdatedStream;
+    _subscription = purchaseUpdates.listen((purchases) {
+      print("Subscription atualizada: $_subscription");
+    }, onDone: () {
+      _subscription.cancel();
+      print("Não houve compra do recurso. Subscription Cancelada");
+    }, onError: (error) {
+      print("Houve erro na compra do recurso!!!");
+    });
+    super.initState();
+  }
+  @override
+  void dispose() {
+    _subscription.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,10 +97,14 @@ class _ItensDeCompraState extends State<ItensDeCompra> {
 //  }
 //  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Roberto
 
+
+
+
   Future<List<ProductDetails>> retrieveProducts() async {
     final bool available = await InAppPurchaseConnection.instance.isAvailable();
     if(!available){
       //se loja não for viável...
+      print("A loja não está viável");
       return null;
     }else{
       final kIdsIos = ['RC.PREMIUM.0001'];
@@ -91,21 +116,50 @@ class _ItensDeCompraState extends State<ItensDeCompra> {
         _kIds = kIdsAndroid.toSet();
       }
       final ProductDetailsResponse response = await InAppPurchaseConnection.instance.queryProductDetails(_kIds);
-      if(response.notFoundIDs.isNotEmpty){
+      if(response.notFoundIDs.isNotEmpty) {
         //se houver erro
+        print("Produto não encontrado na loja");
       }
-      return Future(() => response.productDetails);
+      List<ProductDetails> products = response.productDetails;
+      return products;
+      //return Future(() => response.productDetails);
     }
   }
 
-  void purchaseItem(ProductDetails productDetails){
-    final PurchaseParam purchaseParam = PurchaseParam(productDetails: productDetails);
-    if((Platform.isIOS && productDetails.skProduct.subscriptionPeriod == null) ||
-        (Platform.isAndroid && productDetails.skuDetail.type == SkuType.subs)){
-      InAppPurchaseConnection.instance.buyConsumable(purchaseParam: purchaseParam);
-    }else{
-      InAppPurchaseConnection.instance.buyNonConsumable(purchaseParam: purchaseParam);
-    }
+  void purchaseItem(ProductDetails productDetails) async {
+
+      final PurchaseParam purchaseParam = PurchaseParam(productDetails: productDetails);
+      if((Platform.isIOS && productDetails.skProduct.subscriptionPeriod == null) || (Platform.isAndroid && productDetails.skuDetail.type == SkuType.subs)) {
+        InAppPurchaseConnection.instance.buyConsumable(purchaseParam: purchaseParam);
+
+        if(Platform.isIOS){
+          final QueryPurchaseDetailsResponse response = await InAppPurchaseConnection.instance.queryPastPurchases();
+          if(response.error != null){
+            print("Ocorreu erro na busca por compras passadas. Erro: ${response.error.toString()}");
+          }else{
+            for(PurchaseDetails purchaseDetails in response.pastPurchases) {
+              InAppPurchaseConnection.instance.completePurchase(purchaseDetails);
+              print("ProductID: ${purchaseDetails.productID}");
+              print("Status de compra: ${purchaseDetails.status.toString()}");
+            }
+          }
+        }
+      }else{
+        InAppPurchaseConnection.instance.buyNonConsumable(purchaseParam: purchaseParam);
+
+        if(Platform.isIOS){
+          final QueryPurchaseDetailsResponse response = await InAppPurchaseConnection.instance.queryPastPurchases();
+          if(response.error != null){
+            print("Ocorreu erro na busca por compras passadas. Erro: ${response.error.toString()}");
+          }else{
+            for(PurchaseDetails purchaseDetails in response.pastPurchases) {
+              InAppPurchaseConnection.instance.completePurchase(purchaseDetails);
+              print("ProductID: ${purchaseDetails.productID}");
+              print("Status de compra: ${purchaseDetails.status.toString()}");
+            }
+          }
+        }
+      }
   }
 
   Widget buildProductRow(ProductDetails productDetails){

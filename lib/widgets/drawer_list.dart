@@ -1,3 +1,4 @@
+import 'package:anote_tudo/marketing/marketing_place.dart';
 import 'package:anote_tudo/pages/compras_screen.dart';
 import 'package:anote_tudo/pages/anote_screen.dart';
 import 'package:anote_tudo/pages/itens_de_compra.dart';
@@ -147,7 +148,7 @@ class DrawerList extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(context);
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ItensDeCompra()));
+                        builder: (context) => MarketingPlace()));
                   },
                   title: Text(
                     "Tornar se VIP",

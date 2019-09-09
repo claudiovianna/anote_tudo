@@ -48,18 +48,18 @@ android {
         multiDexEnabled true
     }
 
-    signingConfigs {
-        release {
-            keyAlias'@zeescab1331@'
-            keyPassword '@zeescab1331@'
-            storeFile file('C:/src/key.jks')
-            storePassword '@zeescab1331@'
-        }
-    }
+//    signingConfigs {
+//        release {
+//            keyAlias'@zeescab1331@'
+//            keyPassword '@zeescab1331@'
+//            storeFile file('C:/src/key.jks')
+//            storePassword '@zeescab1331@'
+//        }
+//    }
     buildTypes {
-        release {
-            signingConfig signingConfigs.release
-        }
+//        release {
+//            signingConfig signingConfigs.release
+//        }
     }
 }
 
