@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:anote_tudo/marketing/market_screen.dart';
 import 'package:anote_tudo/pages/perguntas_respostas.dart';
 import 'package:anote_tudo/pages/termos_de_uso.dart';
 import 'package:anote_tudo/utils/alert_r_flutter.dart';
@@ -9,6 +10,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'anote_screen.dart';
 
 class ComprasScreen extends StatefulWidget {
@@ -74,26 +76,56 @@ class _ComprasScreenState extends State<ComprasScreen> {
         _toDoControllerCompras.text = "";
         newToDo["ok"] = false;
         //>>>>>>>CLAUDIO
-        var qtdItens = _toDoListCompras.length + 1;
-        print("Quantidade de itens: $qtdItens");
-        if (qtdItens <= 10) {
-          _toDoListCompras.add(newToDo);
-          _saveData();
-        } else {
-          print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
-          final alert = AlertRFlutter.alertTwoButtons(
-              context,
-              "SEJA VIP",
-              "Essa versão é limitada a 10 itens por lista. Para que você utilize todas as vantagens e sobretudo itens ilimitados nas listas torne-se VIP!",
-              "EU QUERO",
-              "NÃO QUERO");
-          alert
-              .alertWarningWithTwoButtons(openCancelButton, openVipButton)
-              .show();
-        }
+        _productControl(newToDo);
+        //contando itens da lista
+//        var qtdItens = _toDoListCompras.length + 1;
+//        print("Quantidade de itens: $qtdItens");
+//        if (qtdItens <= 10) {
+//          _toDoListCompras.add(newToDo);
+//          _saveData();
+//        } else {
+//          print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
+//          final alert = AlertRFlutter.alertTwoButtons(
+//              context,
+//              "SEJA VIP",
+//              "Essa versão é limitada a 10 itens por lista. Para que você utilize todas as vantagens e sobretudo itens ilimitados nas listas torne-se VIP!",
+//              "EU QUERO",
+//              "NÃO QUERO");
+//          alert
+//              .alertWarningWithTwoButtons(openCancelButton, openVipButton)
+//              .show();
+//        }
         //>>>>>>>CLAUDIO
       }
     });
+  }
+
+  ///controla recursos comprados
+  _productControl(Map<String, dynamic> newToDo) async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if(prefs.getInt("RC.PREMIUM.0001") != 1){
+      //contando itens da lista
+      var qtdItens = _toDoListCompras.length + 1;
+      print("Quantidade de itens: $qtdItens");
+      if (qtdItens <= 10) {
+        _toDoListCompras.add(newToDo);
+        _saveData();
+      } else {
+        print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
+        final alert = AlertRFlutter.alertTwoButtons(
+            context,
+            "SEJA VIP",
+            "Essa versão é limitada a 10 itens por lista. Para que você utilize todas as vantagens e sobretudo itens ilimitados nas listas torne-se VIP!",
+            "EU QUERO",
+            "NÃO QUERO");
+        alert
+            .alertWarningWithTwoButtons(openCancelButton, openVipButton)
+            .show();
+      }
+    }else if(prefs.getInt("RC.PREMIUM.0001") == 1){
+      _toDoListCompras.add(newToDo);
+      _saveData();
+    }
   }
 
   Future<Null> _refresh() async {
@@ -287,7 +319,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
   }
 
   void openVipButton() {
-    ScreenNavigator.screenNavigatorWithContext(context, PerguntasRespostas());
+    ScreenNavigator.screenNavigatorWithContext(context, MarketScreen());
   }
 
   void openCancelButton() {

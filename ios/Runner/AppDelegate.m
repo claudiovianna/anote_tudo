@@ -5,6 +5,7 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  UIApplication.sharedApplication.statusBarHidden = false;
   [FIRApp configure];
 
   [GeneratedPluginRegistrant registerWithRegistry:self];
