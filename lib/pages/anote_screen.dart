@@ -327,10 +327,10 @@ class _AnoteScreenState extends State<AnoteScreen> {
     ScreenNavigator.screenNavigatorWithContext(context, ComprasScreen());
   }
 
-  void openVipButton() async{
+  void openVipButton() {
     ///TESTE DE ITENS ILIMITADOS
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setInt("RC.PREMIUM.0001", 1);
+//    SharedPreferences prefs = await SharedPreferences.getInstance();
+//    await prefs.setInt("RC.PREMIUM.0001", 1);
     ScreenNavigator.screenNavigatorWithContext(context, MarketScreen());
   }
 
