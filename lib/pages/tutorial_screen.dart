@@ -39,7 +39,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
               "+ Recuperação de item excluído\n"
               "+ Contato com os desenvolvedores\n"
               "+ Reogarnização automática dos itens\n\n"
-              "Quer se tornar um usuário VIP?\nNo final deste tutorial clique na imagem.",
+              "Quer se tornar um usuário VIP?\nEntre no aplicativo, acesse\no menu e clique em Tornar se VIP",
           pathImage: "assets/images/funcionalidades.png",
           backgroundColor: Colors.green[300]),
     );
@@ -61,7 +61,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
               fontWeight: FontWeight.normal,
               fontFamily: "Roboto"),
           description:
-              '''Anote suas tarefas, seus filmes prediletos, recados, telefones, pagamentos, horários de remédios, disciplinas, reuniões, etc.\n\nVocê não vai mais precisar de papel nem de caneta, apenas do Anote Tudo!''',
+              '''Anote suas tarefas, seus filmes prediletos, recados, telefones, pagamentos, horários de remédios, disciplinas, reuniões, etc...\n\nVocê não vai mais precisar de papel e de caneta, apenas do Anote Tudo!''',
           pathImage: "assets/images/tarefas.png",
           backgroundColor: Colors.green[300]),
     );
@@ -83,14 +83,14 @@ class _TutorialScreenState extends State<TutorialScreen> {
               fontWeight: FontWeight.normal,
               fontFamily: "Roboto"),
           description:
-              '''Anote sua lista de mercado, materiais escolares, materiais de construção, remédios, ração do seu pet, etc.\n\n Você não vai mais esquecer aquele item importante de suas compras!''',
+              '''Anote sua lista de mercado, materiais escolares, materiais de construção, remédios, ração do seu pet, etc...\n\n Você não vai mais esquecer aquele item importante de suas compras!''',
           pathImage: "assets/images/compras.png",
           backgroundColor: Colors.green[300]),
     );
 
     slides.add(
       Slide(
-        title: "QUERO SER VIP",
+        title: "SEJA VIP",
         styleTitle: TextStyle(
             color: Colors.white,
             fontSize: 25,
@@ -107,10 +107,12 @@ class _TutorialScreenState extends State<TutorialScreen> {
         onCenterItemPress: () {},
 
         pathImage: "assets/images/vip.png",
-        description: "BENEFICIOS\n\n"
+        description: "BENEFÍCIOS\n\n"
+            "+ Funcionalidades liberadas para sempre\n"
             "+ Itens ilimitados em suas listas\n\n"
-            "Imagine você não ter limites\nde itens em suas lista\n\n"
-            "ISSO É SENSACIONAL!",
+            "Imagine você ter todas as funcionalidades\ndisponíveis para sempre,"
+            "\ninclusive novas funcionalidades\nem atualizações futuras do aplicativo.\n\n"
+            "ISSO É SUPER PRODUTIVO!",
         backgroundColor: Colors.green[300],
       ),
     );

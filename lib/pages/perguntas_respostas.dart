@@ -64,7 +64,7 @@ class PerguntasRespostas extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 5),
               child: ListTile(
                 title: Text(
-                  "Como fazer a reorganização dos itens?",
+                  "Como fazer a reorganização dos itens selecionados e não selecionados?",
                   style: TextStyle(
                       color: Colors.grey[900], fontSize: 16.0,
                       fontWeight: FontWeight.bold
@@ -77,13 +77,13 @@ class PerguntasRespostas extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 5),
               child: ListTile(
                 title: Text(
-                  "Quando tiver atualização do app eu vou receber?",
+                  "Quando tiver atualização do app, eu vou receber?",
                   style: TextStyle(
                       color: Colors.grey[900], fontSize: 16.0,
                       fontWeight: FontWeight.bold
                   ),
                 ),
-                subtitle: Text("Sim, se seu app foi adquirido nas lojas Aplle Store ou Google Play.", style: TextStyle(color: Colors.grey[700], fontSize: 14.0),),
+                subtitle: Text("Sim, se seu app foi adquirido nas lojas Apple Store ou Google Play.", style: TextStyle(color: Colors.grey[700], fontSize: 14.0),),
               ),
             ),
             Container(
@@ -96,7 +96,20 @@ class PerguntasRespostas extends StatelessWidget {
                       fontWeight: FontWeight.bold
                   ),
                 ),
-                subtitle: Text("Todos os seus dados armazenados serão perdidos e não poderam ser recuperados.", style: TextStyle(color: Colors.grey[700], fontSize: 14.0),),
+                subtitle: Text("Todos os seus dados armazenados serão perdidos e não poderão ser recuperados.", style: TextStyle(color: Colors.grey[700], fontSize: 14.0),),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(bottom: 5),
+              child: ListTile(
+                title: Text(
+                  "Como eu posso me tornar VIP?",
+                  style: TextStyle(
+                      color: Colors.grey[900], fontSize: 16.0,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+                subtitle: Text("acesse o menu e clique em Tornar se VIP.", style: TextStyle(color: Colors.grey[700], fontSize: 14.0),),
               ),
             ),
             Container(

@@ -178,18 +178,20 @@ class _MarketScreenState extends State<MarketScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Row(children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    //texto vindo das lojas
-                    Text(
-                      prod.title,
-                      style: TextStyle(fontSize: 16, color: Colors.black),
-                    ),
-                    Text(
-                      prod.description,
-                      style: TextStyle(fontSize: 14, color: Colors.black),
-                    )
-                  ],
+                Center(
+                  child: Column(
+                    children: <Widget>[
+                      //texto vindo das lojas
+                      Text(
+                        prod.title,
+                        style: TextStyle(fontSize: 16, color: Colors.black),
+                      ),
+                      Text(
+                        prod.description,
+                        style: TextStyle(fontSize: 14, color: Colors.black),
+                      )
+                    ],
+                  ),
                 ),
               ]
               ),

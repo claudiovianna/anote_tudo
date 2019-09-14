@@ -152,14 +152,14 @@ class DrawerList extends StatelessWidget {
                         builder: (context) => MarketScreen()));
                   },
                   title: Text(
-                    "Tornar se VIP",
+                    "Seja VIP",
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black,
                     ),
                   ),
                   subtitle: Text(
-                    "Na compra do app vc terá todas as funcionalidades liberadas!",style: TextStyle(
+                    "Sendo VIP, você tera todas as funcionalidades liberadas para sempre!",style: TextStyle(
                     fontSize: 14,
                   ),
                   ),
