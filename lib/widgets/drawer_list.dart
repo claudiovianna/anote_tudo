@@ -1,8 +1,8 @@
 import 'package:anote_tudo/marketing/market_screen.dart';
-//import 'package:anote_tudo/marketing/marketing_place.dart';
+//import 'package:anote_tudo/marketing/marketing_place_Apagar.dart';
 import 'package:anote_tudo/pages/compras_screen.dart';
 import 'package:anote_tudo/pages/anote_screen.dart';
-//import 'package:anote_tudo/pages/itens_de_compra.dart';
+//import 'package:anote_tudo/pages/itens_de_compra_arquivar.dart';
 import 'package:anote_tudo/pages/perguntas_respostas.dart';
 import 'package:anote_tudo/pages/termos_de_uso.dart';
 import 'package:flutter/material.dart';
@@ -175,6 +175,6 @@ class DrawerList extends StatelessWidget {
     );
   }
   Image _blocoNotas() {
-    return Image.asset("assets/images/logo.png", fit: BoxFit.fill);
+    return Image.asset("assets/images/logo_menu.png", fit: BoxFit.fill);
   }
 }

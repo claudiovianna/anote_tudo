@@ -2,7 +2,6 @@ import 'package:anote_tudo/pages/splash_screen.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 
 void main() => runApp(MyApp());

@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:anote_tudo/marketing/market_screen.dart';
-import 'package:anote_tudo/pages/perguntas_respostas.dart';
-import 'package:anote_tudo/pages/termos_de_uso.dart';
 import 'package:anote_tudo/utils/alert_r_flutter.dart';
 import 'package:anote_tudo/utils/screen_navigator.dart';
 import 'package:anote_tudo/widgets/drawer_list.dart';
@@ -11,6 +10,7 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'anote_screen.dart';
 
 class ComprasScreen extends StatefulWidget {
@@ -26,6 +26,7 @@ class ComprasScreen extends StatefulWidget {
 
 class _ComprasScreenState extends State<ComprasScreen> {
   _ComprasScreenState(this.analytics, this.observer);
+
   final FirebaseAnalyticsObserver observer;
   final FirebaseAnalytics analytics;
 
@@ -45,65 +46,23 @@ class _ComprasScreenState extends State<ComprasScreen> {
     });
   }
 
-//  void _addToDo() {
-//    setState(() {
-//      Map<String, dynamic> newToDo = Map();
-//      newToDo["title"] = _toDoControllerCompras.text;
-//      //validando campo vazio
-//      if(_toDoControllerCompras.text != ""){
-//        _toDoControllerCompras.text = "";
-//        newToDo["ok"] = false;
-//        //>>>>>>>CLAUDIO
-//        //contando itens da lista
-//        var qtdItens = _toDoListCompras.length + 1;
-//        print("Quantidade de itens: $qtdItens");
-//        if(qtdItens <= 5){
-//          _toDoListCompras.add(newToDo);
-//          _saveData();
-//        }else{
-//          print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
-//        }
-//        //>>>>>>>CLAUDIO
-//      }
-//    });
-//  }
   void _addToDo() {
     setState(() {
       Map<String, dynamic> newToDo = Map();
       newToDo["title"] = _toDoControllerCompras.text;
-      //validadndo o campo vazio >>>>>>>> ROBERTO
+      //validadndo o campo vazio
       if (_toDoControllerCompras.text != "") {
         _toDoControllerCompras.text = "";
         newToDo["ok"] = false;
-        //>>>>>>>CLAUDIO
         _productControl(newToDo);
-        //contando itens da lista
-//        var qtdItens = _toDoListCompras.length + 1;
-//        print("Quantidade de itens: $qtdItens");
-//        if (qtdItens <= 10) {
-//          _toDoListCompras.add(newToDo);
-//          _saveData();
-//        } else {
-//          print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
-//          final alert = AlertRFlutter.alertTwoButtons(
-//              context,
-//              "SEJA VIP",
-//              "Essa versão é limitada a 10 itens por lista. Para que você utilize todas as vantagens e sobretudo itens ilimitados nas listas torne-se VIP!",
-//              "EU QUERO",
-//              "NÃO QUERO");
-//          alert
-//              .alertWarningWithTwoButtons(openCancelButton, openVipButton)
-//              .show();
-//        }
-        //>>>>>>>CLAUDIO
       }
     });
   }
 
   ///controla recursos comprados
-  _productControl(Map<String, dynamic> newToDo) async{
+  _productControl(Map<String, dynamic> newToDo) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if(prefs.getInt("RC.PREMIUM.0001") != 1){
+    if (prefs.getInt("RC.PREMIUM.0001") != 1) {
       //contando itens da lista
       var qtdItens = _toDoListCompras.length + 1;
       print("Quantidade de itens: $qtdItens");
@@ -122,7 +81,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
             .alertWarningWithTwoButtons(openCancelButton, openVipButton)
             .show();
       }
-    }else if(prefs.getInt("RC.PREMIUM.0001") == 1){
+    } else if (prefs.getInt("RC.PREMIUM.0001") == 1) {
       _toDoListCompras.add(newToDo);
       _saveData();
     }
@@ -314,8 +273,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
   }
 
   void openComprasScreen() {
-    ScreenNavigator.screenNavigatorWithContext(
-        context, AnoteScreen());
+    ScreenNavigator.screenNavigatorWithContext(context, AnoteScreen());
   }
 
   void openVipButton() {

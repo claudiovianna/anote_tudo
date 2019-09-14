@@ -4,7 +4,7 @@ import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
 
 import 'anote_screen.dart';
-import 'compras_screen.dart';
+
 
 class TutorialScreen extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
 
     slides.add(
       Slide(
-          title: "SEJA VIP",
+          title: "FUNCIONALIDADES",
           styleTitle: TextStyle(
               color: Colors.white,
               fontSize: 25,
@@ -40,7 +40,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
               "+ Contato com os desenvolvedores\n"
               "+ Reogarnização automática dos itens\n\n"
               "Quer se tornar um usuário VIP?\nNo final deste tutorial clique na imagem.",
-          pathImage: "assets/images/este_seja_bem_vindo.png",
+          pathImage: "assets/images/funcionalidades.png",
           backgroundColor: Colors.green[300]),
     );
     slides.add(
@@ -62,7 +62,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
               fontFamily: "Roboto"),
           description:
               '''Anote suas tarefas, seus filmes prediletos, recados, telefones, pagamentos, horários de remédios, disciplinas, reuniões, etc.\n\nVocê não vai mais precisar de papel nem de caneta, apenas do Anote Tudo!''',
-          pathImage: "assets/images/este_seja_bem_vindo.png",
+          pathImage: "assets/images/tarefas.png",
           backgroundColor: Colors.green[300]),
     );
     slides.add(
@@ -84,7 +84,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
               fontFamily: "Roboto"),
           description:
               '''Anote sua lista de mercado, materiais escolares, materiais de construção, remédios, ração do seu pet, etc.\n\n Você não vai mais esquecer aquele item importante de suas compras!''',
-          pathImage: "assets/images/este_seja_bem_vindo.png",
+          pathImage: "assets/images/compras.png",
           backgroundColor: Colors.green[300]),
     );
 
@@ -101,14 +101,16 @@ class _TutorialScreenState extends State<TutorialScreen> {
         marginDescription: EdgeInsets.only(left: 10, top: 40, right: 10),
         styleDescription: TextStyle(
             color: Colors.white,
-            fontSize: 25,
+            fontSize: 16,
             fontWeight: FontWeight.normal,
             fontFamily: "Roboto"),
-        onCenterItemPress: () {
-          ScreenNavigator.screenNavigatorWithContext(context, ComprasScreen());
-        },
-        pathImage: "assets/images/este_seja_bem_vindo.png",
-        description: "Click na imagem!",
+        onCenterItemPress: () {},
+
+        pathImage: "assets/images/vip.png",
+        description: "BENEFICIOS\n\n"
+            "+ Itens ilimitados em suas listas\n\n"
+            "Imagine você não ter limites\nde itens em suas lista\n\n"
+            "ISSO É SENSACIONAL!",
         backgroundColor: Colors.green[300],
       ),
     );

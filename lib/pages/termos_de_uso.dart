@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+
 
 class TermosDeUso extends StatelessWidget {
 
@@ -26,13 +26,6 @@ class TermosDeUso extends StatelessWidget {
           children: <Widget>[
             Padding(
              padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
-//              child: Text("Termos de uso e Politica de privacidade",
-//                style: TextStyle(
-//                  fontSize: 20.0,
-//                  color: Colors.grey[400],
-//                  fontWeight: FontWeight.w600,
-//                ),
-//              ),
             ),
             Expanded(
               flex: 1,

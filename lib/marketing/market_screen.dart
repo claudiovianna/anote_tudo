@@ -5,7 +5,6 @@ import 'dart:io';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 final String produtoIos = "RC.PREMIUM.0001";
 final String produtoAndroid = "rc.premium.0001";
 
@@ -15,7 +14,6 @@ class MarketScreen extends StatefulWidget {
 }
 
 class _MarketScreenState extends State<MarketScreen> {
-
   ///instância de comunicação com as lojas
   InAppPurchaseConnection _iap = InAppPurchaseConnection.instance;
 
@@ -30,7 +28,6 @@ class _MarketScreenState extends State<MarketScreen> {
 
   ///ouvinte para novas compras
   StreamSubscription _subscription;
-
 
   @override
   void initState() {
@@ -48,7 +45,7 @@ class _MarketScreenState extends State<MarketScreen> {
     ///checando a viabilidade da loja
     _available = await _iap.isAvailable();
 
-    if(_available){
+    if (_available) {
       await _getProducts();
       await _getPastPurchases();
 
@@ -56,24 +53,25 @@ class _MarketScreenState extends State<MarketScreen> {
 
       ///ouvinte pata novas compras
       _subscription = _iap.purchaseUpdatedStream.listen((data) => setState(() {
-        print("NOVA COMPRA");
-        _purchases.addAll(data);
-        _verifyPurhase();
-      }));
+            print("NOVA COMPRA");
+            _purchases.addAll(data);
+            _verifyPurhase();
+          }));
     }
   }
 
   ///pega todos os produtos viáveis na loja
   Future<void> _getProducts() async {
-
     var productIdentify;
-    if(Platform.isIOS){
+    if (Platform.isIOS) {
       productIdentify = produtoIos;
-    }else{
+    } else {
       productIdentify = produtoAndroid;
     }
+
     ///criando um conjunto de ids do produto que queremos
     Set<String> ids = Set.from([productIdentify]);
+
     ///consultando detalhes do produto na loja
     ProductDetailsResponse response = await _iap.queryProductDetails(ids);
 
@@ -81,18 +79,16 @@ class _MarketScreenState extends State<MarketScreen> {
     setState(() {
       _products = response.productDetails;
     });
-
   }
-
 
   ///obtendo compras passadas do usuário
   Future<void> _getPastPurchases() async {
-    ///retorna produtos NÃO CONSUMIVEIS. obs: esse métdo não retorna produtos consumíveis porque esle podem ser compados varias vezes
+    ///retorna produtos NÃO CONSUMIVEIS. obs: esse método não retorna produtos consumíveis porque eles podem ser compados varias vezes
     QueryPurchaseDetailsResponse response = await _iap.queryPastPurchases();
 
     ///seguindo critério de completePurchase para iOS
-    for(PurchaseDetails purchase in response.pastPurchases) {
-      if(Platform.isIOS){
+    for (PurchaseDetails purchase in response.pastPurchases) {
+      if (Platform.isIOS) {
         _iap.completePurchase(purchase);
       }
     }
@@ -101,28 +97,27 @@ class _MarketScreenState extends State<MarketScreen> {
     setState(() {
       _purchases = response.pastPurchases;
     });
-
   }
 
   ///verificando se o usuário comprou um produto específico
   PurchaseDetails _hasPuchased(String productID) {
     ///percorre as compras para ver se tem algum id correspondente, lembrando que é para produtos NÃO CONSUMÍVEIS
-    return _purchases.firstWhere((purchase) => purchase.productID == productID, orElse: () => null);
+    return _purchases.firstWhere((purchase) => purchase.productID == productID,
+        orElse: () => null);
   }
 
-
   ///verificando compra de pruduto NÃO CONSUMÍVEL e para implementação de regra de negócio para produto CONSUMÍVEL
-  void _verifyPurhase() async{
+  void _verifyPurhase() async {
     var productIdentify;
-    if(Platform.isIOS){
+    if (Platform.isIOS) {
       productIdentify = produtoIos;
-    }else{
+    } else {
       productIdentify = produtoAndroid;
     }
     PurchaseDetails purchase = _hasPuchased(productIdentify);
 
     ///alterando SharedPreferences
-    if(purchase != null && purchase.status == PurchaseStatus.purchased){
+    if (purchase != null && purchase.status == PurchaseStatus.purchased) {
       ///regra de negócio para produto consumível
       print("PRODUTO COMPRADO");
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -133,6 +128,7 @@ class _MarketScreenState extends State<MarketScreen> {
   ///compra do produto
   void _buyProduct(ProductDetails prod) {
     final PurchaseParam purchaseParam = PurchaseParam(productDetails: prod);
+
     ///obs: o android não faz distinção entre consumíveis e não consumíveis
 
     _iap.buyNonConsumable(purchaseParam: purchaseParam);
@@ -142,72 +138,70 @@ class _MarketScreenState extends State<MarketScreen> {
     ///_iap.buyConsumable(purchaseParam: purchaseParam, autoConsume: false);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(_available ? "Listas Ilimitadas" : "Não Disponível",
-          style: TextStyle(color: Colors.white, fontSize: 23.0),),
-        backgroundColor: Colors.green[400],
-      ),
-      body: Center(
-        child: _verificaPossibilidadeDeCompra(context, _products)
+        title: Text(
+          _available ? "Listas Ilimitadas" : "Não Disponível",
+          style: TextStyle(color: Colors.white, fontSize: 23.0),
         ),
+        backgroundColor: Colors.green[400],
+        centerTitle: true,
+      ),
+      body: Center(child: _verificaPossibilidadeDeCompra(context, _products)),
     );
   }
 
-
-
   // ignore: missing_return
-  Widget _verificaPossibilidadeDeCompra(BuildContext context, List<ProductDetails> products){
-    for(var prod in products){
+  Widget _verificaPossibilidadeDeCompra(
+      BuildContext context, List<ProductDetails> products) {
+    for (var prod in products) {
       //verificando se o produto já foi comprado anteriormente
-      if(_hasPuchased(prod.id) != null){
+      if (_hasPuchased(prod.id) != null) {
         return Container(
           margin: EdgeInsets.all(50),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text("Este recurso já foi adquirido anteriormente e está liberado para uso.",
-                    style: TextStyle(fontSize: 16, color: Colors.white))
-              ],
+            children: <Widget>[
+              Text(
+                  "Este recurso já foi adquirido anteriormente e está liberado para uso.",
+                  style: TextStyle(fontSize: 16, color: Colors.black))
+            ],
           ),
         );
-      }else{
+      } else {
         return Container(
-          margin: EdgeInsets.all(25),
+          margin: EdgeInsets.all(28),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Text(prod.title, style: TextStyle(fontSize: 16, color: Colors.white),),
-                      Text(prod.description, style: TextStyle(fontSize: 14, color: Colors.white),)
-                      ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5.0),
-                        child: FlatButton(
-                        child: Text(prod.price, style: TextStyle(fontSize: 16, color: Colors.white)),
-                        color: Colors.green,
-                        onPressed: () => _buyProduct(prod),
-                        ),
-                      )
+              Row(children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    //texto vindo das lojas
+                    Text(
+                      prod.title,
+                      style: TextStyle(fontSize: 16, color: Colors.black),
+                    ),
+                    Text(
+                      prod.description,
+                      style: TextStyle(fontSize: 14, color: Colors.black),
+                    )
+                  ],
+                ),
               ]
+              ),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: FlatButton(
+                  child: Text(prod.price,
+                      style: TextStyle(fontSize: 16, color: Colors.white)
+                  ),
+                  color: Colors.green,
+                  onPressed: () => _buyProduct(prod),
+                ),
               )
             ],
           ),
@@ -215,15 +209,4 @@ class _MarketScreenState extends State<MarketScreen> {
       }
     }
   }
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:anote_tudo/marketing/market_screen.dart';
-import 'package:anote_tudo/pages/perguntas_respostas.dart';
 import 'package:anote_tudo/utils/alert_r_flutter.dart';
 import 'package:anote_tudo/utils/screen_navigator.dart';
 import 'package:anote_tudo/widgets/drawer_list.dart';
@@ -26,6 +26,7 @@ class AnoteScreen extends StatefulWidget {
 
 class _AnoteScreenState extends State<AnoteScreen> {
   _AnoteScreenState(this.analytics, this.observer);
+
   final FirebaseAnalyticsObserver observer;
   final FirebaseAnalytics analytics;
 
@@ -45,28 +46,6 @@ class _AnoteScreenState extends State<AnoteScreen> {
     });
   }
 
-//  void _addToDo() {
-//    setState(() {
-//      Map<String, dynamic> newToDo = Map();
-//      newToDo["title"] = _toDoController.text;
-//      //validando campo vazio
-//      if(_toDoController.text != ""){
-//        _toDoController.text = "";
-//        newToDo["ok"] = false;
-//        //>>>>>>>CLAUDIO
-//        //contando itens da lista
-//        var qtdItens = _toDoList.length + 1;
-//        print("Quantidade de itens: $qtdItens");
-//        if(qtdItens <= 5){
-//          _toDoList.add(newToDo);
-//          _saveData();
-//        }else{
-//          print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
-//        }
-//        //>>>>>>>CLAUDIO
-//      }
-//    });
-//  }
   void _addToDo() {
     setState(() {
       Map<String, dynamic> newToDo = Map();
@@ -75,35 +54,16 @@ class _AnoteScreenState extends State<AnoteScreen> {
       if (_toDoController.text != "") {
         _toDoController.text = "";
         newToDo["ok"] = false;
-        //>>>>>>>CLAUDIO
+
         _productControl(newToDo);
-        //contando itens da lista
-//        var qtdItens = _toDoList.length + 1;
-//        print("Quantidade de itens: $qtdItens");
-//        if (qtdItens <= 10) {
-//          _toDoList.add(newToDo);
-//          _saveData();
-//        } else {
-//          print("<<<<<<<<<<<<<<<<<<<  VIRE VIP  >>>>>>>>>>>>>>>>>>");
-//          final alert = AlertRFlutter.alertTwoButtons(
-//              context,
-//              "SEJA VIP",
-//              "Essa versão é limitada a 10 itens por lista. Para que você utilize todas as vantagens e sobretudo itens ilimitados nas listas torne-se VIP!",
-//              "EU QUERO",
-//              "NÃO QUERO");
-//          alert
-//              .alertWarningWithTwoButtons(openCancelButton, openVipButton)
-//              .show();
-//        }
-        //>>>>>>>CLAUDIO
       }
     });
   }
 
   ///controla recursos comprados
-  _productControl(Map<String, dynamic> newToDo) async{
+  _productControl(Map<String, dynamic> newToDo) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if(prefs.getInt("RC.PREMIUM.0001") != 1){
+    if (prefs.getInt("RC.PREMIUM.0001") != 1) {
       //contando itens da lista
       var qtdItens = _toDoList.length + 1;
       print("Quantidade de itens: $qtdItens");
@@ -122,7 +82,7 @@ class _AnoteScreenState extends State<AnoteScreen> {
             .alertWarningWithTwoButtons(openCancelButton, openVipButton)
             .show();
       }
-    }else if(prefs.getInt("RC.PREMIUM.0001") == 1){
+    } else if (prefs.getInt("RC.PREMIUM.0001") == 1) {
       _toDoList.add(newToDo);
       _saveData();
     }

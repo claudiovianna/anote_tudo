@@ -8,9 +8,6 @@ class ScreenNavigator{
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
       return screen;
     }));
-//    Navigator.push(context, MaterialPageRoute(builder: (context){
-//      return screen;
-//    }));
   }
 
   static void screenNavigatorPopWithContext(BuildContext contextOrigin, Widget screen) {
