@@ -150,7 +150,10 @@ class _MarketScreenState extends State<MarketScreen> {
         backgroundColor: Colors.green[400],
         centerTitle: true,
       ),
-      body: Center(child: _verificaPossibilidadeDeCompra(context, _products)),
+      body: Padding(
+        padding: const EdgeInsets.all(25.0),
+        child: Center(child: _verificaPossibilidadeDeCompra(context, _products)),
+      ),
     );
   }
 
@@ -173,25 +176,23 @@ class _MarketScreenState extends State<MarketScreen> {
         );
       } else {
         return Container(
-          margin: EdgeInsets.all(28),
+          //margin: EdgeInsets.all(50),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Row(children: <Widget>[
-                Center(
-                  child: Column(
-                    children: <Widget>[
-                      //texto vindo das lojas
-                      Text(
-                        prod.title,
-                        style: TextStyle(fontSize: 16, color: Colors.black),
-                      ),
-                      Text(
-                        prod.description,
-                        style: TextStyle(fontSize: 14, color: Colors.black),
-                      )
-                    ],
-                  ),
+                Column(
+                  children: <Widget>[
+                    //texto vindo das lojas
+                    Text(
+                      prod.title,
+                      style: TextStyle(fontSize: 16, color: Colors.black),
+                    ),
+                    Text(
+                      prod.description,
+                      style: TextStyle(fontSize: 14, color: Colors.black),
+                    )
+                  ],
                 ),
               ]
               ),
