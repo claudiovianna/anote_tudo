@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:in_app_purchase/in_app_purchase.dart';
@@ -150,10 +151,7 @@ class _MarketScreenState extends State<MarketScreen> {
         backgroundColor: Colors.green[400],
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(25.0),
-        child: Center(child: _verificaPossibilidadeDeCompra(context, _products)),
-      ),
+      body: Center(child: _verificaPossibilidadeDeCompra(context, _products)),
     );
   }
 
@@ -176,12 +174,13 @@ class _MarketScreenState extends State<MarketScreen> {
         );
       } else {
         return Container(
-          //margin: EdgeInsets.all(50),
+          //margin: EdgeInsets.all(10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Row(children: <Widget>[
+              Container(child:
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     //texto vindo das lojas
                     Text(
@@ -194,7 +193,7 @@ class _MarketScreenState extends State<MarketScreen> {
                     )
                   ],
                 ),
-              ]
+              //]
               ),
               Padding(
                 padding: const EdgeInsets.all(18.0),
