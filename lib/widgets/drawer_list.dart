@@ -32,7 +32,7 @@ class DrawerList extends StatelessWidget {
                         child:
                         Column(
                           children: <Widget>[
-                            Container(child: _blocoNotas(),
+                            Container(child: _logoMenu(),
                                 height: 80,
                                 width: 180,
                             ),
@@ -174,7 +174,7 @@ class DrawerList extends StatelessWidget {
       ),
     );
   }
-  Image _blocoNotas() {
+  Image _logoMenu() {
     return Image.asset("assets/images/logo_menu.png", fit: BoxFit.fill);
   }
 }
