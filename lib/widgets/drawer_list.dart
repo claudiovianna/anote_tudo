@@ -1,8 +1,6 @@
-import 'package:anote_tudo/marketing/market_screen.dart';
-//import 'package:anote_tudo/marketing/marketing_place_Apagar.dart';
+import 'package:anote_tudo/marketing/in_app.dart';
 import 'package:anote_tudo/pages/compras_screen.dart';
 import 'package:anote_tudo/pages/anote_screen.dart';
-//import 'package:anote_tudo/pages/itens_de_compra_arquivar.dart';
 import 'package:anote_tudo/pages/perguntas_respostas.dart';
 import 'package:anote_tudo/pages/termos_de_uso.dart';
 import 'package:flutter/material.dart';
@@ -149,7 +147,7 @@ class DrawerList extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(context);
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MarketScreen()));
+                        builder: (context) => InApp()));
                   },
                   title: Text(
                     "Seja VIP",
@@ -159,7 +157,7 @@ class DrawerList extends StatelessWidget {
                     ),
                   ),
                   subtitle: Text(
-                    "Sendo VIP, você tera todas as funcionalidades liberadas para sempre!",style: TextStyle(
+                    "Sendo VIP, você tera listas com itens ilimitados para sempre!",style: TextStyle(
                     fontSize: 14,
                   ),
                   ),
@@ -169,6 +167,30 @@ class DrawerList extends StatelessWidget {
                     color: Colors.grey[800],
                   ),
                 ),
+            ListTile(
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => InApp()));
+              },
+              title: Text(
+                "Recupere suas Compras",
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              subtitle: Text(
+                "Recupre todas as suas compras feitas anteriormente.",style: TextStyle(
+                fontSize: 14,
+              ),
+              ),
+              leading: Icon(
+                Icons.star,
+                size: 40.0,
+                color: Colors.grey[800],
+              ),
+            )
           ],
         ),
       ),

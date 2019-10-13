@@ -27,11 +27,25 @@ class _SplashScreenState extends State<SplashScreen> {
     }
   }
 
+  Future _createFlagPremium() async {
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    if(prefs.getBool("PREMIUM_VIP") == null){
+      print("Flag PremiumVip: ${prefs.getBool("PREMIUM_VIP")}");
+      await prefs.setBool("PREMIUM_VIP", false);
+      print("Flag PremiumVip: ${prefs.getBool("PREMIUM_VIP")}");
+    }
+    print("Flag PremiumVip gravada: ${prefs.getBool("PREMIUM_VIP")}");
+
+  }
+
   @override
   void initState() {
     super.initState();
     Timer(Duration(seconds: 1), () {
       _checkFirstSeen();
+      _createFlagPremium();
     });
   }
 

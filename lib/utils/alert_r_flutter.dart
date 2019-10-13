@@ -61,6 +61,7 @@ class AlertRFlutter {
   //Construtores
   AlertRFlutter(this._context, this._title, this._content, this._titleActionButton);
   AlertRFlutter.alertTwoButtons(this._context, this._title, this._content, this._titleActionButton, this.titleActionCancelButton);
+  AlertRFlutter.alertOneButton(this._context, this._title, this._content, this._titleActionButton);
 
 
   //Alerta de ERRO
@@ -116,6 +117,58 @@ class AlertRFlutter {
         ]);
   }
 
+  //Alerta de Sucesso
+  Alert alertSuccessWithOneButtonWithContext(BuildContext context) {
+    return Alert(
+        context: _context,
+        style: _alertStyleSuccess,
+        type: AlertType.success,
+        title: _title,
+        desc: _content,
+        buttons: [
+          DialogButton(
+            child: Text(
+              _titleActionButton,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold),
+            ),
+            onPressed: () {
+              Navigator.pop(_context);
+            },
+            width: 200,
+            color: Color(0xFFCFCFCF),
+          ),
+        ]);
+  }
+
+  //Alerta de Sucesso sem Ação
+  Alert alertSuccessWithOneButtonWithoutAction() {
+    return Alert(
+        context: _context,
+        style: _alertStyleSuccess,
+        type: AlertType.success,
+        title: _title,
+        desc: _content,
+        buttons: [
+          DialogButton(
+            child: Text(
+              _titleActionButton,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold),
+            ),
+            onPressed: () {
+              Navigator.pop(_context);
+            },
+            width: 200,
+            color: Color(0xFFCFCFCF),
+          ),
+        ]);
+  }
+
   //Alerta de ATENÇÃO
   Alert alertWarningWithOneButton() {
     return Alert(
@@ -137,7 +190,7 @@ class AlertRFlutter {
               Navigator.pop(_context);
             },
             width: 200,
-            color: Colors.grey[400],
+            color: Color(0xFFCFCFCF),
           ),
         ]);
   }

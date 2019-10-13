@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:anote_tudo/marketing/market_screen.dart';
+import 'package:anote_tudo/marketing/in_app.dart';
 import 'package:anote_tudo/utils/alert_r_flutter.dart';
 import 'package:anote_tudo/utils/screen_navigator.dart';
 import 'package:anote_tudo/widgets/drawer_list.dart';
@@ -62,7 +61,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
   ///controla recursos comprados
   _productControl(Map<String, dynamic> newToDo) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (prefs.getInt("RC.PREMIUM.0001") != 1) {
+    if (prefs.getBool("PREMIUM_VIP") == null || prefs.getBool("PREMIUM_VIP") == false) {
       //contando itens da lista
       var qtdItens = _toDoListCompras.length + 1;
       print("Quantidade de itens: $qtdItens");
@@ -81,7 +80,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
             .alertWarningWithTwoButtons(openCancelButton, openVipButton)
             .show();
       }
-    } else if (prefs.getInt("RC.PREMIUM.0001") == 1) {
+    } else if (prefs.getBool("PREMIUM_VIP") == true) {
       _toDoListCompras.add(newToDo);
       _saveData();
     }
@@ -280,7 +279,7 @@ class _ComprasScreenState extends State<ComprasScreen> {
     ///TESTE DE ITENS ILIMITADOS
 //    SharedPreferences prefs = await SharedPreferences.getInstance();
 //    await prefs.setInt("RC.PREMIUM.0001", 1);
-    ScreenNavigator.screenNavigatorWithContext(context, MarketScreen());
+    ScreenNavigator.screenNavigatorWithContext(context, InApp());
   }
 
   void openCancelButton() {
