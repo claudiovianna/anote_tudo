@@ -213,61 +213,66 @@ class _InAppState extends State<InApp> {
           children: <Widget>[
             Container(
               height: 50,
-              margin: EdgeInsets.only(bottom: 5.0),
+              margin: EdgeInsets.only(bottom: 0.0),
               child: Text(
                 //item.toString(),
                 item.title,
                 style: TextStyle(
                   fontSize: 18.0,
-                  color: Colors.black,
+                  color: Colors.grey[600],
                   //color: Colors.white,
                 ),
               ),
             ),
             Container(
               height: 50,
-              margin: EdgeInsets.only(bottom: 5.0),
+              margin: EdgeInsets.only(bottom: 0.0),
               child: Text(
                 //item.toString(),
                 item.description,
                 style: TextStyle(
                   fontSize: 15.0,
-                  color: Colors.black,
+                  color: Colors.grey[600],
                   //color: Colors.white,
                 ),
               ),
             ),
             Container(
               height: 50,
-              margin: EdgeInsets.only(bottom: 5.0),
+              margin: EdgeInsets.only(bottom:0.0),
               child: Text(
                 //item.toString(),
                 item.localizedPrice,
                 style: TextStyle(
                   fontSize: 15.0,
-                  color: Colors.black,
+                  color: Colors.grey[600],
                   //color: Colors.white,
                 ),
               ),
             ),
-            FlatButton(
-              color: Colors.orange,
+          Container(
+            height: 60.0,
+            margin: EdgeInsets.all(7.0),
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius:  BorderRadius.circular(16)
+              ),
+              color: Colors.orange[400],
               onPressed: () {
                 print("O botão de compra foi precionado!!!");
                 this._requestPurchase(item);
               },
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      height: 48.0,
-                      alignment: Alignment(-1.0, 0.0),
-                      child: Text('COMPRAR'),
-                    ),
-                  ),
-                ],
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  alignment: Alignment(0.0, 0.0),
+                  child: Text('COMPRAR',
+              style: TextStyle(
+                  fontSize: 16.0,
               ),
-            ),
+              ),
+                ),
+             ),
+          ),
           ],
         ),
       ),
@@ -323,9 +328,13 @@ class _InAppState extends State<InApp> {
               Container(
                 //width: buttonWidth,
                   height: 60.0,
-                  margin: EdgeInsets.all(7.0),
+                  //margin: EdgeInsets.all(7.0),
+                  margin: EdgeInsets.fromLTRB(7.0, 90, 7.0, 20),
                   child: FlatButton(
-                    color: Colors.green,
+                    shape: RoundedRectangleBorder(
+                      borderRadius:  BorderRadius.circular(16)
+                    ),
+                    color: Colors.green[400],
                     padding: EdgeInsets.all(0.0),
                     onPressed: () {
                       print(
@@ -343,6 +352,11 @@ class _InAppState extends State<InApp> {
                       ),
                     ),
                   )
+              ),
+              Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                child: Text("ITENS PARA COMPRA",
+                  style: TextStyle(color: Colors.black, fontSize: 16.0),
+                ),
               ),
             ],
           ),

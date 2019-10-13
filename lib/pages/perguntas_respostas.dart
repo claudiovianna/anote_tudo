@@ -109,7 +109,7 @@ class PerguntasRespostas extends StatelessWidget {
                       fontWeight: FontWeight.bold
                   ),
                 ),
-                subtitle: Text("acesse o menu e clique em Tornar se VIP.", style: TextStyle(color: Colors.grey[700], fontSize: 14.0),),
+                subtitle: Text("acesse o menu e clique em Seja VIP.", style: TextStyle(color: Colors.grey[700], fontSize: 14.0),),
               ),
             ),
             Container(

@@ -40,7 +40,7 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "br.com.cast4.AnoteTudo"
-        minSdkVersion 16
+        minSdkVersion 22
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -48,18 +48,18 @@ android {
         multiDexEnabled true
     }
 
-//    signingConfigs {
-//        release {
-//            keyAlias'@zeescab1331@'
-//            keyPassword '@zeescab1331@'
-//            storeFile file('C:/src/key.jks')
-//            storePassword '@zeescab1331@'
-//        }
-//    }
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
     buildTypes {
-//        release {
-//            signingConfig signingConfigs.release
-//        }
+        release {
+            signingConfig signingConfigs.release
+        }
     }
 }
 
