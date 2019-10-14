@@ -1,3 +1,4 @@
+import 'package:anote_tudo/pages/anote_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -161,7 +162,8 @@ class AlertRFlutter {
                   fontWeight: FontWeight.bold),
             ),
             onPressed: () {
-              Navigator.pop(_context);
+              Route route = MaterialPageRoute(builder: (_content)=> AnoteScreen());
+              Navigator.push(_context, route);
             },
             width: 200,
             color: Color(0xFFCFCFCF),

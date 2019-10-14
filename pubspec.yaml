@@ -3,7 +3,7 @@ description: Faça suas de compras e ou tarefas do dia e salve em seu celular...
 autthors:
    - Claudio Vianna - iOS <claudiolavianna@gmail.com>
    - Roberto Castro - Android <robocast1331@gmail.com>
-version: 0.1.0+4
+version: 0.1.0+5
 # Tudo que esta antes do sinal de + é o nome da versão e depois é o código da versão.
 #Então aqui o nome para o usuario  é 0.1.0  e o código da versão de controle do app é 1
 #Sempre mudar o código da versão +1 quando fizer atualização para o aplicativo flutter,
@@ -26,9 +26,8 @@ dependencies:
   intro_slider: ^2.2.7
   shared_preferences: ^0.5.3+4
   rflutter_alert: ^1.0.2
-  in_app_purchase: ^0.2.1+3
-
-  flutter_inapp_purchase: ^2.0.0+12
+  in_app_purchase: ^0.2.1+4
+  flutter_inapp_purchase: ^2.0.2
 
 
 

@@ -186,7 +186,7 @@ class DrawerList extends StatelessWidget {
               ),
               ),
               leading: Icon(
-                Icons.star,
+                Icons.redeem,
                 size: 40.0,
                 color: Colors.grey[800],
               ),

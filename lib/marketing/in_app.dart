@@ -368,5 +368,4 @@ class _InAppState extends State<InApp> {
     );
   }
 
-
 }
