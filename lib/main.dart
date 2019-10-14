@@ -2,6 +2,7 @@ import 'package:anote_tudo/pages/splash_screen.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 void main() => runApp(MyApp());
@@ -40,6 +41,13 @@ class _MyAppState extends State<MyApp> {
       ),
       home:  SplashScreen(),
     );
+  }
+  void main() {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp,DeviceOrientation.portraitDown])
+        .then((_) {
+      runApp(MyApp());
+    });
   }
 
 }
