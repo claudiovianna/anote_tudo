@@ -94,6 +94,9 @@ class _InAppState extends State<InApp> {
         ///alerta de sucesso
         final alert = AlertRFlutter.alertOneButton(context, "PARABÉNS", "Sua compra foi realizada com sucesso", "OK");
         alert.alertSuccessWithOneButtonWithoutAction().show();
+      }else{
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setBool("PREMIUM_VIP", false);
       }
 
     });
