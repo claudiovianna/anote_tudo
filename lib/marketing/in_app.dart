@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inapp_purchase/flutter_inapp_purchase.dart';
 import 'package:flutter_inapp_purchase/modules.dart';
+import 'package:in_app_purchase/billing_client_wrappers.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -90,6 +92,17 @@ class _InAppState extends State<InApp> {
       if(productItem.productId == "RC.PREMIUM.0001" || productItem.productId == "rc.premium.0001"){
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setBool("PREMIUM_VIP", true);
+
+
+
+
+
+
+//        ///confirmação de compra para Android
+//        if(Platform.isAndroid){
+//
+//
+//        }
 
         ///alerta de sucesso
         final alert = AlertRFlutter.alertOneButton(context, "PARABÉNS", "Sua compra foi realizada com sucesso", "OK");

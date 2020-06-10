@@ -71,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Padding(
                 padding: EdgeInsets.fromLTRB(12, 40, 12, 40),
                 child: Text(
-                  "Versão 0.1.0", //x.x.X = numero de correções
+                  "Versão 1.0.1", //x.x.X = numero de correções
                   //x.X.x = melhorias que sofreu o aplicativo
                   //X.x.x = funções importantes incorporadas desde o lançamentoc
                   style: TextStyle(

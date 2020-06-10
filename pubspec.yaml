@@ -27,7 +27,7 @@ dependencies:
   shared_preferences: ^0.5.3+4
   rflutter_alert: ^1.0.2
   in_app_purchase: ^0.2.1+4
-  flutter_inapp_purchase: ^2.0.2
+  flutter_inapp_purchase: ^2.0.3
 
 
 
